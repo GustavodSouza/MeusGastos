@@ -1,0 +1,8 @@
+<button [ngClass]="tipo" (click)="dispararEvento()">
+  <span *ngIf="!loader; else loaderAtivo">
+    {{ nome }}
+  </span>
+  <ng-template #loaderAtivo>
+    <app-loader></app-loader>
+  </ng-template>
+</button>

@@ -1,0 +1,22 @@
+.mat-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.button-yes, .button-no {
+  border: 1px solid rgba(145, 145, 145, 0.527);
+}
+
+.button-yes {
+  background-color: rgb(9, 155, 9);
+  color: #fff;
+}
+
+.button-no {
+  background-color: rgb(196, 21, 21);
+  color: #fff;
+}
+
+.buttons {
+  margin: 0 10px 0 0;
+}

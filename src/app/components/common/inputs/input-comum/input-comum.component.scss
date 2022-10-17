@@ -1,0 +1,20 @@
+@import '../../../../../assets/scss/variaveis.scss';
+
+input {
+  outline: none;
+  border: 1px solid $borda-input;
+  background-color: $branco;
+  border-radius: 10px;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 20px;
+  width: calc(100% - 20px); // total - padding
+}
+
+.icone-olho {
+  position: relative;
+  top: -35px;
+  right: 0;
+  left: 85%;
+  cursor: pointer;
+}

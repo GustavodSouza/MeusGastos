@@ -1,0 +1,81 @@
+@import "../../../assets/scss/mobile-style/payments-mobile.scss";
+@import "../../../assets/scss/table.scss";
+@import "../../../assets/scss/util.scss";
+
+// Seta os gaps
+mat-expansion-panel,
+mat-card,
+.container {
+  margin: 20px 0 20px 0;
+}
+
+// Seta o 'padding' do elemento da tela
+.section-container {
+  width: calc(100% - 30px);
+  margin: 0 auto;
+}
+
+.icon-hide {
+  cursor: pointer;
+  color: #68d592;
+  margin-left: 10px;
+}
+
+.div-info,
+.div-mes-filtrado,
+.div-current-money {
+  display: flex;
+  align-items: center;
+  margin: 0 0 10px 0;
+}
+
+.positive {
+  color: rgb(0, 161, 54);
+}
+
+.negative {
+  color: rgb(163, 0, 0);
+}
+
+.olho-preco {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+::ng-deep mat-panel-title {
+  font-size: 1.5em;
+}
+
+::ng-deep mat-expansion-panel,
+mat-card {
+  border-radius: 10px !important;
+}
+
+.buttons > button {
+  margin-right: 10px;
+}
+
+.filtro {
+  display: flex;
+  align-items: center;
+  margin: 30px 20px;
+  padding-left: 20px !important;
+  width: 30%;
+}
+
+.filtro h1 {
+  margin-right: 10px;
+}
+
+.container {
+  width: 100%;
+}
+
+.selecionar-mes {
+  width: 50%;
+
+  h1 {
+    margin: 0 10px;
+  }
+}

@@ -1,0 +1,53 @@
+@media (max-width: 800px) {
+  .informacoes {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .info-span {
+      font-size: 1em;
+    }
+  }
+
+  mat-panel-title.mat-expansion-panel-header-title,
+  mat-card-title.mat-card-title {
+    display: flex;
+    justify-content: center;
+  }
+
+  ::ng-deep mat-panel-title {
+    font-size: 1em !important;
+  }
+
+  .card-pagamento {
+    margin: 20px 0 20px 0;
+  }
+
+  .div-current-money {
+    flex-direction: column;
+  }
+
+  .buttons {
+    width: 100%;
+    margin-top: 5px;
+    justify-content: center;
+  }
+
+  .olho-preco {
+    justify-content: center;
+  }
+
+  .filtro-mes {
+    flex-direction: column;
+
+    .selecionar-mes, .filtro {
+      width: 100%;
+    }
+
+    .selecionar-mes {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}

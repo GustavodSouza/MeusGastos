@@ -1,0 +1,33 @@
+::ng-deep mat-card-actions.mat-card-actions {
+  display: flex;
+  justify-content: center;
+}
+
+::ng-deep mat-card.mat-card.mat-focus-indicator {
+  margin-top: 1em;
+}
+
+// Cards de login
+mat-card {
+  width: 80%;
+  margin: 0 auto;
+  border-radius: 20px;
+}
+
+.center {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container.mat-elevation-z8 {
+  margin-top: 15px;
+  padding: 5px;
+}
+
+@media (max-width: 800px) {
+  mat-card {
+    width: 80%;
+  }
+}

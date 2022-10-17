@@ -1,0 +1,11 @@
+::ng-deep .mat-form-field {
+  width: 100% !important;
+}
+
+.buttons {
+  display: flex;
+
+  .button {
+    margin: 0 10px 0 0;
+  }
+}

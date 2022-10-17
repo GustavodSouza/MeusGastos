@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "paylife": {
+      "hosting": {
+        "payLife": [
+          "paylife"
+        ]
+      }
+    }
+  }
+}

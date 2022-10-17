@@ -1,0 +1,250 @@
+<app-loader-pagamentos></app-loader-pagamentos>
+
+<section class="section-container">
+  <mat-accordion multi>
+    <mat-expansion-panel #expansivelNovoPagamento>
+      <mat-expansion-panel-header>
+        <mat-panel-title> Cadastrar Novo Pagamento </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <form [formGroup]="formulario">
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label>Descrição do item</mat-label>
+            <input matInput formControlName="descricao" required />
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label>Preço pago</mat-label>
+            <input
+              matInput
+              type="number"
+              min="1"
+              formControlName="preco"
+              required
+            />
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Dia do pagamento</mat-label>
+            <input
+              matInput
+              (click)="picker.open()"
+              [matDatepicker]="picker"
+              formControlName="dataPagamento"
+              required
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <div class="buttons">
+          <button
+            [disabled]="!formulario.valid"
+            mat-raised-button
+            color="primary"
+            (click)="adicionarNovoPagamento()"
+          >
+            Cadastrar
+          </button>
+
+          <button
+            type="button"
+            mat-raised-button
+            color="info"
+            (click)="formulario.reset()"
+          >
+            Limpar
+          </button>
+        </div>
+      </form>
+    </mat-expansion-panel>
+    <!-- <mat-expansion-panel #expansivelFiltros>
+      <mat-expansion-panel-header>
+        <mat-panel-title> Filtro </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <div>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <input
+            matInput
+            #inputFiltroDia
+            (dateChange)="filtrarPorDia($event.target.value)"
+            (click)="picker2.open()"
+            [matDatepicker]="picker2"
+            placeholder="Filtrar por dia"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker2"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <mat-form-field appearance="fill">
+        <mat-select
+          #inputFiltroMes
+          placeholder="Filtrar por mês"
+          (valueChange)="filtrarPorMes($event)"
+        >
+          <mat-option [value]="mes" *ngFor="let mes of meses">
+            {{ mes.nome }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div class="buttons">
+        <div class="button">
+          <button mat-raised-button color="info" (click)="clearFilter()">
+            Limpar
+          </button>
+        </div>
+      </div>
+    </mat-expansion-panel> -->
+  </mat-accordion>
+
+  <mat-card class="card-pagamento mat-elevation-z8">
+    <mat-card-title class="title-card">
+      <span class="info-span"> Informações </span>
+    </mat-card-title>
+    <mat-card-content>
+      <div class="informacoes">
+        <div class="div-info" *ngIf="!mesFiltrado && !diaFiltrado">
+          <span>Data atual:</span>
+          <span class="bold margin-left">{{
+            diaAtual | date: "dd/MM/YYYY"
+          }}</span>
+        </div>
+
+        <div class="div-info" *ngIf="mesFiltrado || diaFiltrado">
+          <span>Filtro aplicado para: </span>
+          <span class="bold" *ngIf="mesFiltrado">{{
+            mesFiltrado | titlecase
+          }}</span>
+          <span class="bold" *ngIf="diaFiltrado">{{ diaFiltrado }}</span>
+
+          <div *ngIf="diaFiltrado || mesFiltrado">
+            <button
+              class="button-clear"
+              mat-raised-button
+              color="primary"
+              (click)="clearFilter()"
+            >
+              Limpar
+            </button>
+          </div>
+        </div>
+
+        <div class="div-info">
+          <span>Total de gastos do mês: </span>
+          <span class="bold margin-left">{{
+            dinheiroTotal | currency: "R$"
+          }}</span>
+        </div>
+        <!-- <div class="div-current-money">
+          <div class="info-current-money">
+            <span
+              >Simulação de salário restante:
+              <strong
+                [ngClass]="{
+                  positive: this.salarioRecebidoMes >= 0,
+                  negative: this.salarioRecebidoMes <= 0
+                }"
+              >
+                {{
+                  !salarioRecebidoMes
+                    ? "R$ 0"
+                    : (salarioRecebidoMes | currency: "R$")
+                }}
+              </strong>
+            </span>
+          </div>
+          <div class="buttons margin-left">
+            <div class="margin-right">
+              <button
+                class="button-clear"
+                mat-raised-button
+                color="primary"
+                (click)="addMoney()"
+              >
+                {{ !salarioRecebidoMes ? "Inserir" : "Atualizar" }}
+              </button>
+            </div>
+            <div>
+              <button
+                *ngIf="salarioRecebidoMes"
+                class="button-clear"
+                mat-raised-button
+                color="warn"
+                (click)="removeCurrentMoney()"
+              >
+                Remover
+              </button>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="card-pagamento mat-elevation-z8">
+    <mat-card-title class="title-card">
+      <span class="info-span"> Opções </span>
+    </mat-card-title>
+    <mat-card-content>
+      <div class="olho-preco">
+        <h4>
+          {{ tabelaService.ocultar ? "Mostrar" : "Ocultar" }} preço da tabela:
+        </h4>
+        <mat-icon
+          class="icon-hide"
+          (click)="tabelaService.ocultar = !tabelaService.ocultar"
+          >{{
+            tabelaService.ocultar ? "visibility" : "visibility_off"
+          }}</mat-icon
+        >
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <div class="mat-elevation-z8">
+    <div class="filtro-mes container flex">
+      <div class="filtro">
+        <h1>Filtrar por descrição:</h1>
+        <input
+          type="search"
+          name="filtrar"
+          [(ngModel)]="filtrar"
+          placeholder="Insira a descrição do item"
+        />
+      </div>
+      <div class="flex ">
+        <div class="selecionar-mes flex margin-right">
+          <fa-icon (click)="mudarMes('mesAnterior')" [icon]="icones.faArrowCircleLeft"></fa-icon>
+          <h1 class="bold">{{ retornaMesAtual | titlecase }}</h1>
+          <fa-icon (click)="mudarMes('mesSucessor')" [icon]="icones.faArrowCircleRight"></fa-icon>
+        </div>
+        <div class="selecionar-mes flex">
+          <fa-icon (click)="mudarAno('anoAnterior')" [icon]="icones.faArrowCircleLeft"></fa-icon>
+          <h1 class="bold">{{ retornaAnoAtual }}</h1>
+          <fa-icon (click)="mudarAno('anoSucessor')" [icon]="icones.faArrowCircleRight"></fa-icon>
+        </div>
+      </div>
+    </div>
+    <app-tabela
+      [dados]="listaAuxiliar"
+      [colunas]="colunas"
+      (editarEmit)="editarPagamento($event)"
+      (deletarEmit)="deletarPagamento($event)"
+    >
+    </app-tabela>
+  </div>
+</section>

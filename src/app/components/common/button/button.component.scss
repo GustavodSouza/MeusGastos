@@ -1,0 +1,24 @@
+@import "../../../../assets/scss/variaveis.scss";
+
+button {
+  border: none;
+  outline: none;
+  color: $branco;
+  background-color: #C5C5C5;;
+  padding: 10px 20px 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.sucesso {
+  background-color: $sucesso;
+}
+
+.erro {
+  background-color: $erro;
+}
+
+.informacao {
+  background-color: $informacao;
+}

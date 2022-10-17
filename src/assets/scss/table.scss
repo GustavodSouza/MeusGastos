@@ -1,0 +1,27 @@
+::ng-deep table.mat-table.cdk-table.mat-elevation-z8,
+mat-form-field {
+  width: 100%;
+}
+
+::ng-deep .mat-paginator-container {
+  display: flex;
+  justify-content: center !important;
+}
+
+::ng-deep th {
+  font-size: 30px;
+}
+
+::ng-deep th,
+td {
+  font-size: 1.2em !important;
+  color: #000000 !important;
+}
+
+@media (max-width: 800px) {
+  ::ng-deep th,
+  td {
+    font-size: 0.8em !important;
+    color: #000000 !important;
+  }
+}

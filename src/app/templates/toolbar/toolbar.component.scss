@@ -1,0 +1,43 @@
+@import '../../../assets/scss/variaveis.scss';
+@import '../../../assets/scss/mobile-style/toolbar-mobile.scss';
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  background-color: $branco;
+}
+
+.menu > ul {
+  display: flex;
+}
+
+.menu > ul > li {
+  list-style: none;
+  margin: 15px;
+}
+
+li {
+  font-size: 20px;
+}
+
+li:hover {
+  cursor: pointer;
+}
+
+.manterMarcado {
+  border-top: 3px solid $verde-escuro;
+  border-bottom: 3px solid $verde-escuro;
+}
+
+.efeitoHover {
+  border-top: 3px solid $branco;
+  border-bottom: 3px solid $branco;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.efeitoHover:hover {
+  border-top: 3px solid $verde-escuro;
+  border-bottom: 3px solid $verde-escuro;
+  padding: 3px 0; 
+}
