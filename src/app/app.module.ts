@@ -37,6 +37,7 @@ import { InputComumComponent } from './components/common/inputs/input-comum/inpu
 import { MatIconModule } from '@angular/material/icon';
 import { TabelaComponent } from './components/common/tabela/tabela.component';
 import { MenuComponent } from './shared/components/menu/menu.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 registerLocaleData(localePt);
 @NgModule({
@@ -74,6 +75,12 @@ registerLocaleData(localePt);
     AngularFireModule,
     MatIconModule,
     FontAwesomeModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
   ],
   providers: [
     HttpClient,
