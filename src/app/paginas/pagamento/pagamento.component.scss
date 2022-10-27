@@ -1,6 +1,7 @@
 @import "../../../assets/scss/mobile-style/payments-mobile.scss";
 @import "../../../assets/scss/table.scss";
 @import "../../../assets/scss/util.scss";
+@import "../../../assets/scss/variaveis.scss";
 
 // Seta os gaps
 mat-expansion-panel,
@@ -87,4 +88,16 @@ mat-card {
 
 ::ng-deep .cdk-text-field-autofill-monitored:not(:-webkit-autofill) {
   color: #000 !important;
+}
+
+::ng-deep .mat-expansion-panel:not(.mat-expanded):not([aria-disabled=true]) .mat-expansion-panel-header:hover {
+  background-color: $dark-mode;
+}
+
+::ng-deep div#mat-select-0-panel {
+  background-color: $dark-mode;
+}
+
+::ng-deep .mat-expansion-indicator::after {
+  color: $branco;
 }

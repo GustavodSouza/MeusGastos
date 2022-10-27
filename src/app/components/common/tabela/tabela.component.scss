@@ -8,6 +8,18 @@ table {
   background-color: $dark-mode;
 }
 
-td {
+td, th {
+  color: $branco;
+}
+
+::ng-deep th.mat-header-cell.cdk-header-cell.cdk-column-acoes.mat-column-acoes.ng-star-inserted {
+  color: $branco !important;
+}
+
+::ng-deep .mat-menu-content.ng-tns-c44-15 {
+  background-color: $dark-mode;
+}
+
+.icone-opcoes {
   color: $branco;
 }

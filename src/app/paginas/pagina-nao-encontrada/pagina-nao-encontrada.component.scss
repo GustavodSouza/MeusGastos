@@ -1,12 +1,23 @@
-img {
-  width: 50%;
-  height: 80%;
-}
-
 .center {
   width: 100%;
   height: 80vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 10px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 5rem;
+}
+
+h3 {
+  font-size: 2em;
+}
+
+a {
+  text-decoration: underline;
+  cursor: pointer;
 }

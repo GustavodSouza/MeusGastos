@@ -57,7 +57,7 @@ registerLocaleData(localePt);
     ButtonComponent,
     InputComumComponent,
     TabelaComponent,
-    MenuComponent
+    MenuComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [

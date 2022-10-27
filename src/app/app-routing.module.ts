@@ -13,11 +13,6 @@ const routes: Routes = [
     component: EntrarComponent,
     canActivate: [RouteGuardService]
   },
-  // {
-  //   path: 'pagina-inicial',
-  //   loadChildren: () => import('./paginas/pagina-inicial/pagina-inicial.module').then((m) => m.PaginaInicialModule),
-  //   canActivate: [RouteGuardService]
-  // },
   {
     path: 'pagamento',
     loadChildren: () => import('./paginas/pagamento/pagamento.module').then((m) => m.PagamentoModule),
@@ -36,6 +31,7 @@ const routes: Routes = [
   {
     path: '**',
     component: PaginaNaoEncontradaComponent,
+    canActivate: [RouteGuardService],
   }
 ];
 
