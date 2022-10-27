@@ -1,9 +1,10 @@
 import { LoginService } from './../paginas/login/services/login.service';
- import { PerfilService } from 'src/app/shared/services/perfil.service';
- import { Injectable } from '@angular/core';
- import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
- import { Observable } from 'rxjs';
+import { PerfilService } from 'src/app/shared/services/perfil.service';
+import { Injectable } from '@angular/core';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { Observable } from 'rxjs';
 import { ToolbarService } from '../templates/toolbar/service/toolbar.service';
+import * as _ from 'lodash';
 
  @Injectable({
     providedIn: 'root'
@@ -21,6 +22,7 @@ import { ToolbarService } from '../templates/toolbar/service/toolbar.service';
       const user = this.perfilService.getPerfil();
       const rotasValidas = ['/', '/entrar', '/pagamento', '/sobre'];
       const rotasLogin = ['/', '/entrar'];
+      const rotasRestritas = ['/pagamento'];
 
       if (rotasLogin.includes(state.url) || !rotasValidas.includes(state.url)) {
         this.toolbarService.setEsconderToolbar = true;
@@ -29,11 +31,8 @@ import { ToolbarService } from '../templates/toolbar/service/toolbar.service';
         this.loginService.primeiraLetraNome.next(this.obterPrimeiraLetraNome());
       }
 
-
-      const rotasRestritas = ['/pagamento'];
-
-      // Controla a regra de acesso as páginas restritas
-      if (rotasRestritas.includes(state.url) && user === null) {
+      // Se a rota for restrita e o usuário não estiver logado, redireciona para o login
+      if (rotasRestritas.includes(state.url) && _.isNil(user)) {
         this.router.navigate(['entrar']);
         return false;
       }
@@ -42,7 +41,7 @@ import { ToolbarService } from '../templates/toolbar/service/toolbar.service';
     }
 
     obterPrimeiraLetraNome(): string {
-      let posicaoUltimoEspaco;
+      let posicaoUltimoEspaco: number;
       let primeiraLetraPrimeiroNome = ''
       let primeiraLetraUltimoNome = '';
 

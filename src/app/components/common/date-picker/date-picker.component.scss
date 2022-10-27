@@ -1,0 +1,17 @@
+@import '../../../../assets/scss/variaveis.scss';
+
+::ng-deep mat-form-field {
+  width: 100%;
+}
+
+::ng-deep button.mat-focus-indicator.mat-calendar-previous-button.mat-icon-button.mat-button-base,
+::ng-deep button.mat-focus-indicator.mat-calendar-next-button.mat-icon-button.mat-button-base,
+::ng-deep .mat-calendar-body-cell-content.mat-focus-indicator,
+::ng-deep tr.ng-star-inserted,
+::ng-deep td.mat-calendar-body-label.ng-star-inserted {
+  color: $branco !important;
+}
+
+::ng-deep mat-calendar#mat-datepicker-0 {
+  background-color: $dark-mode !important;
+}

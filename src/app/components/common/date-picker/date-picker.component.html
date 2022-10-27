@@ -1,0 +1,17 @@
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Dia do pagamento</mat-label>
+    <input
+      matInput
+      (click)="picker.open()"
+      [matDatepicker]="picker"
+      (input)="onInput($event.target.value)"
+      (blur)="onInput($event.target.value)"
+      (change)="onInput($event.target.value)"
+      required
+    />
+    <mat-datepicker-toggle
+      matSuffix
+      [for]="picker"
+    ></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>

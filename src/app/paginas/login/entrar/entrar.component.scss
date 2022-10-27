@@ -1,3 +1,5 @@
+@import '../../../../assets/scss/variaveis.scss';
+
 .section-container {
   height: 60vh;
   padding-left: 20px;
@@ -21,10 +23,6 @@ h3 {
 img {
   height: 30%;
   cursor: pointer;
-}
-
-img:hover {
-  position: relative;
 }
 
 @media (max-width: 800px) {

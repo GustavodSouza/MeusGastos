@@ -1,3 +1,5 @@
+import { DatePickerComponent } from './components/common/date-picker/date-picker.component';
+import { PagamentoModule } from './paginas/pagamento/pagamento.module';
 import { RouteGuardService } from './guard/route-guard.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -19,12 +21,9 @@ import { registerLocaleData } from '@angular/common';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatPaginatorIntlCro } from './config/table-config';
 import { SnackbarComponent } from './shared/components/snackbar/snackbar.component';
-import { TitleComponent } from './components/common/title/title.component';
 import { MaterialModule } from './shared/material-angular/material-angular.module';
-import { PaginaInicialComponent } from './paginas/pagina-inicial/pagina-inicial.component';
 import { EntrarComponent } from './paginas/login/entrar/entrar.component';
 import { AtualizacaoComponent } from './paginas/atualizacao/atualizacao.component';
-import { PaginaInicialModule } from './paginas/pagina-inicial/pagina-inicial.module';
 import { PagamentoComponent } from './paginas/pagamento/pagamento.component';
 import { ConfirmarDialogComponent } from './paginas/pagamento/dialog/confirmar/confirmar.component';
 import { EditarDialogComponent } from './paginas/pagamento/dialog/editar-pagamento/editar-pagamento.component';
@@ -33,31 +32,30 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LoaderPagamentosComponent } from './components/common/loader-pagamentos/loader-pagamentos.component';
 import { MatSortModule } from '@angular/material/sort';
 import { ButtonComponent } from './components/common/button/button.component';
-import { InputComumComponent } from './components/common/inputs/input-comum/input-comum.component';
 import { MatIconModule } from '@angular/material/icon';
 import { TabelaComponent } from './components/common/tabela/tabela.component';
 import { MenuComponent } from './shared/components/menu/menu.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { InputComponent } from './components/common/input/input.component';
 
 registerLocaleData(localePt);
 @NgModule({
   declarations: [
     AppComponent,
-    PaginaInicialComponent,
     ToolbarComponent,
     PagamentoComponent,
     EntrarComponent,
     SnackbarComponent,
-    TitleComponent,
     AtualizacaoComponent,
     ConfirmarDialogComponent,
     EditarDialogComponent,
     AdicionarSaldoDialogComponent,
     LoaderPagamentosComponent,
     ButtonComponent,
-    InputComumComponent,
     TabelaComponent,
     MenuComponent,
+    DatePickerComponent,
+    InputComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
@@ -68,7 +66,7 @@ registerLocaleData(localePt);
     AppRoutingModule,
     ReactiveFormsModule,
     MaterialModule,
-    PaginaInicialModule,
+    PagamentoModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     HttpClientModule,

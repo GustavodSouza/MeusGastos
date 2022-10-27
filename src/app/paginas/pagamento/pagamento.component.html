@@ -9,48 +9,22 @@
 
       <form [formGroup]="formulario">
         <div>
-          <mat-form-field appearance="fill">
-            <mat-label>Descrição do item</mat-label>
-            <input matInput formControlName="descricao" required />
-          </mat-form-field>
+          <app-input formControlName="descricao">Descrição do item</app-input>
         </div>
 
         <div>
-          <mat-form-field appearance="fill">
-            <mat-label>Preço pago</mat-label>
-            <input
-              matInput
-              type="number"
-              min="1"
-              formControlName="preco"
-              required
-            />
-          </mat-form-field>
+          <app-input tipo="number" formControlName="preco">Preço pago</app-input>
         </div>
 
         <div>
-          <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Dia do pagamento</mat-label>
-            <input
-              matInput
-              (click)="picker.open()"
-              [matDatepicker]="picker"
-              formControlName="dataPagamento"
-              required
-            />
-            <mat-datepicker-toggle
-              matSuffix
-              [for]="picker"
-            ></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field>
+          <app-date-picker formControlName="dataPagamento"></app-date-picker>
         </div>
 
         <div class="buttons">
           <app-button [disabled]="!formulario.valid" background="sucesso" label="label-branco" (evento)="adicionarNovoPagamento()">Cadastrar</app-button>
           <app-button background="branco" label="label-preto" (evento)="formulario.reset()">Limpar</app-button>
         </div>
-        
+
       </form>
     </mat-expansion-panel>
     <!-- <mat-expansion-panel #expansivelFiltros>

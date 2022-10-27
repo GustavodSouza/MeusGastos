@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { RouteGuardService } from './guard/route-guard.service';
 import { EntrarComponent } from './paginas/login/entrar/entrar.component';
 import { EntrarModule } from './paginas/login/entrar/entrar.module';
-import { PaginaInicialComponent } from './paginas/pagina-inicial/pagina-inicial.component';
 import { PaginaNaoEncontradaComponent } from './paginas/pagina-nao-encontrada/pagina-nao-encontrada.component';
 
 const routes: Routes = [
