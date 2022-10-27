@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/paginas/login/services/login.service';
 import { MenuService } from 'src/app/shared/components/menu/menu.service';
@@ -9,26 +9,26 @@ interface Imenu {
   nome: string;
 }
 
-enum variaveis {
-  LOGIN = 'Login',
-}
 @Component({
   selector: 'app-toolbar',
   templateUrl: './toolbar.component.html',
   styleUrls: ['./toolbar.component.scss']
 })
-export class ToolbarComponent {
+export class ToolbarComponent implements OnDestroy {
 
   public hamburguerActive = false;
+  public nomeResumido: string;
+  public esconderToolbar: boolean;
+  $subscription;
 
   public menu: Array<Imenu> = [
     {
-      path: '/pagina-inicial',
-      nome: 'Início'
-    },
-    {
       path: '/pagamento',
       nome: 'Registrar/Consultar Pagamentos'
+    },
+    {
+      path: '/sobre',
+      nome: 'Sobre'
     },
   ];
 
@@ -37,13 +37,24 @@ export class ToolbarComponent {
     public loginService: LoginService,
     public router: Router,
     public menuService: MenuService,
-  ) {}
+  ) {
+
+    this.$subscription = this.toolbarService.getEsconderToolbar.subscribe((esconder: boolean) => {
+      this.esconderToolbar = esconder;
+    });
+
+    this.$subscription = this.loginService.primeiraLetraNome.subscribe((nomeResumido: string) => {
+      this.nomeResumido = nomeResumido;
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.$subscription.unsubscribe();
+  }
 
   marcarItemMenu(path?: string): string {
     if (path) {
       return path === this.router.url ? 'manterMarcado' : 'efeitoHover';
-    } else {
-      return this.router.url === '/entrar' ? 'manterMarcado' : 'efeitoHover';
     }
   }
 
@@ -59,5 +70,11 @@ export class ToolbarComponent {
   desativarMenu(): void {
     this.menuService.isAtivo = false;
     this.menuService.referencia.nativeElement.classList.value = '';
+  }
+
+
+
+  logout(): void {
+    this.loginService.logout();
   }
 }

@@ -1,6 +1,6 @@
-<mat-toolbar class="toolbar" (window:resize)="capturarTamanhoTela($event)" *ngIf="!toolbarService.mobile else mobileToolbar">
+  <mat-toolbar class="toolbar" (window:resize)="capturarTamanhoTela($event)" *ngIf="(!toolbarService.mobile && !esconderToolbar)">
   <div class="logo">
-    <app-title type="toolbar"></app-title>
+    <h3>MeusGastos</h3>
   </div>
   <div class="menu">
     <ul>
@@ -11,15 +11,51 @@
       >
         {{ item.nome }}
       </li>
-      <li
+      <!-- <li
         *ngIf="loginService.nomeUsuario !== null; else login"
         [matMenuTriggerFor]="menuUsuario"
         [ngClass]="marcarItemMenu()"
       >{{ loginService.nomeUsuario }}</li>
       <ng-template #login>
-        <li 
+        <li
           routerLink="entrar"
           [ngClass]="marcarItemMenu()"
+        >
+          Login
+        </li>
+      </ng-template> -->
+      <li>
+        <div [matMenuTriggerFor]="menuUsuario" class="avatar">
+          <span>{{ nomeResumido }}</span>
+        </div>
+      </li>
+    </ul>
+    <mat-menu #menuUsuario="matMenu">
+      <button mat-menu-item (click)="logout()">Sair</button>
+    </mat-menu>
+  </div>
+</mat-toolbar>
+
+<div (window:resize)="capturarTamanhoTela($event)" *ngIf="(toolbarService.mobile && !esconderToolbar)">
+  <div class="logo-mobile">
+    <h3>MeusGastos</h3>
+    <app-menu class="menu"></app-menu>
+  </div>
+  <div [ngClass]="{'menu-mobile-desativado' : !menuService.isAtivo, 'menu-mobile-ativado' : menuService.isAtivo}">
+    <ul>
+      <li
+        *ngFor="let item of menu"
+        (click)="redirecionar(item.path)"
+      >
+        {{ item.nome }}
+      </li>
+      <li
+        *ngIf="loginService.nomeUsuario !== null; else login"
+        [matMenuTriggerFor]="menuUsuario"
+      >{{ loginService.nomeUsuario }}</li>
+      <ng-template #login>
+        <li
+          routerLink="entrar"
         >
           Login
         </li>
@@ -29,36 +65,4 @@
       <button mat-menu-item (click)="loginService.logout()">Sair</button>
     </mat-menu>
   </div>
-</mat-toolbar>
-<ng-template #mobileToolbar>
-  <div (window:resize)="capturarTamanhoTela($event)">
-    <div class="logo-mobile">
-      <app-title type="toolbar"></app-title>
-      <app-menu class="menu"></app-menu>
-    </div>
-    <div [ngClass]="{'menu-mobile-desativado' : !menuService.isAtivo, 'menu-mobile-ativado' : menuService.isAtivo}">
-      <ul>
-        <li
-          *ngFor="let item of menu"
-          (click)="redirecionar(item.path)"
-        >
-          {{ item.nome }}
-        </li>
-        <li
-          *ngIf="loginService.nomeUsuario !== null; else login"
-          [matMenuTriggerFor]="menuUsuario"
-        >{{ loginService.nomeUsuario }}</li>
-        <ng-template #login>
-          <li 
-            routerLink="entrar"
-          >
-            Login
-          </li>
-        </ng-template>
-      </ul>
-      <mat-menu #menuUsuario="matMenu">
-        <button mat-menu-item (click)="loginService.logout()">Sair</button>
-      </mat-menu>
-    </div>
-  </div>
-</ng-template>
+</div>

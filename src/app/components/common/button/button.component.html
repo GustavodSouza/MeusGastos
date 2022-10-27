@@ -1,6 +1,6 @@
-<button [ngClass]="tipo" (click)="dispararEvento()">
-  <span *ngIf="!loader; else loaderAtivo">
-    {{ nome }}
+<button [disabled]="isDisabled" [ngClass]="background" (click)="dispararEvento()" mat-raised-button>
+  <span [ngClass]="label" *ngIf="!loader; else loaderAtivo">
+    <ng-content></ng-content>
   </span>
   <ng-template #loaderAtivo>
     <app-loader></app-loader>

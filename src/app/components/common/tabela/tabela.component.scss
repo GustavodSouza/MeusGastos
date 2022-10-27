@@ -1,3 +1,13 @@
+@import '../../../../assets/scss/variaveis.scss';
+
 table {
   width: 100%;
+}
+
+.dark-mode, mat-paginator {
+  background-color: $dark-mode;
+}
+
+td {
+  color: $branco;
 }

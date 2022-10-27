@@ -1,21 +1,22 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ToolbarService {
 
-  public hidden = false;
+  public esconderToolbar = new Subject();
   public isMobile = false;
 
   constructor() { }
 
-  get class(): boolean {
-    return this.hidden;
+  get getEsconderToolbar() {
+    return this.esconderToolbar.asObservable();
   }
 
-  set class(value: boolean) {
-    this.hidden = value;
+  set setEsconderToolbar(value: boolean) {
+    this.esconderToolbar.next(value);
   }
 
   get mobile(): boolean {

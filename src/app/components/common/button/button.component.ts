@@ -1,21 +1,25 @@
-import { Component, EventEmitter, Input, Output } from "@angular/core";
-
-enum tipos {
-  SUCESSO = 'sucesso',
-  INFORMACAO = 'informacao',
-  ERRO = 'erro'
-}
+import { Component, EventEmitter, Input, Output, OnChanges, SimpleChanges } from "@angular/core";
 
 @Component({
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.scss'],
   selector: 'app-button',
 })
-export class ButtonComponent {
-  @Input() nome: string;
+export class ButtonComponent implements OnChanges {
   @Input() loader: boolean;
-  @Input() tipo: string; // Excluir, Cancelar (Vermelho), Confirmar, Concluir, etc (Verde)
+  @Input() background: string;
+  @Input() label: string;
+  @Input() disabled: boolean;
   @Output() evento = new EventEmitter;
+
+  isDisabled = false;
+
+  ngOnChanges(changes: SimpleChanges): void {
+
+    if (changes.disabled) {
+      this.isDisabled = changes.disabled.currentValue;
+    }
+  }
 
   dispararEvento(): void {
     this.evento.emit();

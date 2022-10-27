@@ -7,7 +7,7 @@
   width: 28px;
   height: 2px;
   border-radius: 9999px;
-  background-color: #000;
+  background-color: #fff;
 }
 
 // Adiciona espaço entre os traços
@@ -30,7 +30,7 @@
 
 #navMenu.active > span:nth-child(2) {
   transform: rotate(45deg) translateY(6px);
-  
+
 }
 
 #navMenu.active > span:nth-child(3) {

@@ -4,11 +4,16 @@
 .toolbar {
   display: flex;
   justify-content: space-between;
-  background-color: $branco;
+  background-color: $dark-mode;
+}
+
+.toolbar > .logo > h3 {
+  font-size: 2rem;
 }
 
 .menu > ul {
   display: flex;
+  align-items: center;
 }
 
 .menu > ul > li {
@@ -25,19 +30,33 @@ li:hover {
 }
 
 .manterMarcado {
-  border-top: 3px solid $verde-escuro;
-  border-bottom: 3px solid $verde-escuro;
+  border-top: 3px solid $branco;
+  border-bottom: 3px solid $branco;
 }
 
 .efeitoHover {
-  border-top: 3px solid $branco;
-  border-bottom: 3px solid $branco;
+  border-top: 3px solid $dark-mode;
+  border-bottom: 3px solid $dark-mode;
   text-decoration: none;
   transition: 0.3s ease;
 }
 
 .efeitoHover:hover {
-  border-top: 3px solid $verde-escuro;
-  border-bottom: 3px solid $verde-escuro;
-  padding: 3px 0; 
+  border-top: 3px solid $branco;
+  border-bottom: 3px solid $branco;
+  padding: 3px 0;
+}
+
+.avatar {
+  background-color: #fff;
+  height: 50px;
+  width: 50px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar > span {
+  color: #000;
 }

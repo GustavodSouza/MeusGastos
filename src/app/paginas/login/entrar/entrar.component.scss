@@ -1,55 +1,34 @@
-@import "../../../../assets/scss/card.scss";
-
 .section-container {
   height: 60vh;
   padding-left: 20px;
   padding-right: 20px;
+  padding-top: 5%;
   display: flex;
   align-items: center;
-}
-
-h1 {
-  font-size: 30px;
-  margin-bottom: 20px;
+  flex-direction: column;
 }
 
 h2 {
-  font-size: 20px;
-  margin-bottom: 10px;
+  font-size: 5rem;
+  padding-bottom: 10rem;
 }
 
-.form-google {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-
-    .login-google {
-      margin: 1rem;
-      border: 4px solid transparent;
-      cursor: pointer;
-      height: 5em;
-      width: 5.5em;
-      border-radius: 50%;
-      background-color: #fff;
-      transition: filter 2s;
-      box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-
-      img {
-        height: 3.5em;
-      }
-    }
-
-    .login-google:hover {
-      background-color: #689DF7;
-    }
-
-    span {
-      color: #fff;
-      font: 400 1rem 'Noto Sans JP', sans-serif;
-    }
+h3 {
+  font-size: 1.5rem;
+  padding-top: 2rem;
 }
 
-.card-login {
-  box-shadow: 0 4px 10px 0 black !important;
+img {
+  height: 30%;
+  cursor: pointer;
+}
+
+img:hover {
+  position: relative;
+}
+
+@media (max-width: 800px) {
+  h2 {
+    font-size: 2rem;
+  }
 }

@@ -47,24 +47,10 @@
         </div>
 
         <div class="buttons">
-          <button
-            [disabled]="!formulario.valid"
-            mat-raised-button
-            color="primary"
-            (click)="adicionarNovoPagamento()"
-          >
-            Cadastrar
-          </button>
-
-          <button
-            type="button"
-            mat-raised-button
-            color="info"
-            (click)="formulario.reset()"
-          >
-            Limpar
-          </button>
+          <app-button [disabled]="!formulario.valid" background="sucesso" label="label-branco" (evento)="adicionarNovoPagamento()">Cadastrar</app-button>
+          <app-button background="branco" label="label-preto" (evento)="formulario.reset()">Limpar</app-button>
         </div>
+        
       </form>
     </mat-expansion-panel>
     <!-- <mat-expansion-panel #expansivelFiltros>
