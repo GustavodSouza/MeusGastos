@@ -10,14 +10,11 @@ import { CalculoService } from 'src/app/utils/calculo.service';
 import { MatSelect } from '@angular/material/select';
 import { MatExpansionPanel } from '@angular/material/expansion';
 import { Pagamento, Pagamentos } from './interface/pagamento.interface';
-import { Mes, Meses } from './interface/mes.interface';
-import { Saldo, Saldos } from './interface/saldo.interface';
 import { ConfirmarDialogComponent } from './dialog/confirmar/confirmar.component';
 import { EditarDialogComponent } from './dialog/editar-pagamento/editar-pagamento.component';
-import { AdicionarSaldoDialogComponent } from './dialog/adicionar-saldo/adicionar-saldo.component';
 import { LoaderPagamentosService } from 'src/app/components/common/loader-pagamentos/loader-pagamentos.service';
 import { TabelaService } from 'src/app/components/common/tabela/tabela.service';
-import { faArrowCircleLeft, faArrowCircleRight } from '@fortawesome/free-solid-svg-icons';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-pagamento',
@@ -31,29 +28,16 @@ export class PagamentoComponent implements OnInit {
   dinheiroTotal = 0;
   key: string;
   colunas: Array<string> = ['descricao', 'preco', 'dataPagamento', 'acoes'];
-  meses: Meses = this.pagamentoService.obterMeses();
-  anos = this.pagamentoService.obterAno();
-  mesFiltrado = '';
-  diaFiltrado = '';
+
   salarioRecebidoMes = 0;
   diaAtual = new Date();
   dados: Pagamentos;
   listaAuxiliar: Pagamentos;
 
-  mesAtualIndice = 0;
-  anoAtualIndice = 0;
-  mesSelecionado = '';
-  anoSelecionado = '';
-
   @ViewChild('inputFiltroDia') inputFiltroDia: ElementRef;
   @ViewChild('inputFiltroMes') inputFiltroMes: MatSelect;
   @ViewChild('expansivelNovoPagamento') expansivelNovoPagamento: MatExpansionPanel;
   @ViewChild('expansivelFiltros') expansivelFiltros: MatExpansionPanel;
-
-  public icones = {
-    faArrowCircleLeft,
-    faArrowCircleRight
-  };
 
   constructor(
     private pagamentoService: PagamentoService,
@@ -74,7 +58,7 @@ export class PagamentoComponent implements OnInit {
     this.inicializarFormulario();
     this.buscarTodosPagamentos();
     // this.buscarSaldoDoMes();
-    this.obterIndiceMesAnoAtual();
+
   }
 
   public inicializarFormulario(): void {
@@ -105,7 +89,7 @@ export class PagamentoComponent implements OnInit {
     this.dialog.open(ConfirmarDialogComponent, {
       data: {
         item: item.descricao
-      }
+      },
     }).afterClosed().subscribe(async (retorno) => {
       if (retorno) {
         this.pagamentoService.deletarPagamento(item.key, item);
@@ -152,31 +136,10 @@ export class PagamentoComponent implements OnInit {
     });
   }
 
-  // public async filtrarPorDia(data: Date): Promise<void> {
-  //   const { dia, mes, ano} = this.momentService.obterDataQuebrada(data);
-
-  //   (await this.pagamentoService.filtrarPagamentoPorDia(mes, ano)).subscribe((response: Pagamentos) => {
-  //     this.listaAuxiliar = response.filter((item) => {
-  //       return this.momentService.obterDataQuebrada(item.dataPagamento).dia === dia;
-  //     });
-
-  //     if (!this.listaAuxiliar.length) {
-  //       this.snackBarService.showSnackbar(`Nenhum pagamento encontrado para o dia ${dia}`);
-  //     }
-
-  //     this.dinheiroTotal = this.calculoService.calcularTotalPagamentos(this.listaAuxiliar);
-  //   });
-  // }
-
   public adicionarNovoPagamento(): void {
     const perfilSession = this.perfilService.getPerfil();
 
-    if (this.formulario.valid && perfilSession !== null) {
-      /* Formata a data */
-      this.formulario.patchValue({
-        dataPagamento: this.momentService.dateFormatBR(this.formulario.value.dataPagamento),
-        uidUser: perfilSession.user.uid ?? '',
-      });
+    if (this.formulario.valid && !_.isNil(perfilSession)) {
 
       this.pagamentoService.adicionarNovoPagamento(this.formulario.value);
       this.limparFormulario();
@@ -202,32 +165,6 @@ export class PagamentoComponent implements OnInit {
   limparFormulario(): void {
     this.formulario.reset();
   }
-
-  //async filtrarPorMes(data: { nome: string, valor: string}): Promise<void> {
-    // let isDataParametro!: boolean;
-    // let dataPesquisa: string | number;
-
-    // if (dataParametro) {
-    //   isDataParametro = true;
-    //   dataPesquisa = this.momentService.obterDataQuebrada(dataParametro).mes;
-    // } else {
-    //   dataPesquisa = dataInput.valor;
-    // }
-
-    // this.mesFiltrado = dataInput.nome ?? this.mesFiltrado;
-    // const { mes } = this.momentService.obterDataQuebrada(data.valor);
-
-  //   (await this.pagamentoService.filtrarPagamentoPorMes(data.valor)).subscribe((pagamento: Pagamentos) => {
-
-  //     this.listaAuxiliar = pagamento;
-
-  //     if (!this.dados.length) {
-  //       this.snackBarService.showSnackbar(`Nenhum pagamento encontrado para o mês de ${data.nome}`);
-  //     }
-
-  //     this.dinheiroTotal = this.calculoService.calcularTotalPagamentos(this.listaAuxiliar);
-  //   });
-  // }
 
   // public validCurrentMoney(): string {
   //   return Math.sign(this.salarioRecebidoMes) === 1 ? 'positive' : 'negative';
@@ -275,87 +212,13 @@ export class PagamentoComponent implements OnInit {
       item.descricao.toLowerCase().includes(valor.toLowerCase()));
   }
 
-  get retornaMesAtual(): string {
-    return this.meses[this.mesAtualIndice].nome;
+  set setDinheiroTotal(dinheiroTotal: number) {
+    this.dinheiroTotal = dinheiroTotal;
   }
 
-  get retornaAnoAtual(): string {
-    return this.anos[this.anoAtualIndice].nome;
+  set setPagamentos(pagamentos: Pagamentos) {
+    this.listaAuxiliar = pagamentos;
   }
 
-  /**
-   * @description Método utilizado para mover o indice e alterar o mês referencia
-   * @param direcao Parametro em String que recebe uma direção para mover o indice
-   */
-  async mudarMes(direcao: string): Promise<void> {
-    if (direcao === 'mesAnterior') {
-      if (this.mesAtualIndice !== 0) {
-        this.mesAtualIndice += - 1;
-      }
-    } else {
-      if (this.mesAtualIndice < this.meses.length - 1) {
-        this.mesAtualIndice += + 1;
-      }
-    }
-    this.mesSelecionado = this.meses[this.mesAtualIndice].valor;
-    this.buscarPorMesAno();
-  }
-
-
-  /**
-   * @description Método utilizado para mover o indice e alterar o ano referencia
-   * @param direcao Parametro em String que recebe uma direção para mover o indice
-   */
-  async mudarAno(direcao: string): Promise<void> {
-    if (direcao === 'anoAnterior') {
-      if (this.anoAtualIndice !== 0) {
-        this.anoAtualIndice += - 1;
-      }
-    } else {
-      if (this.anoAtualIndice < this.meses.length - 1) {
-        this.anoAtualIndice += + 1;
-      }
-    }
-
-    this.anoSelecionado = this.anos[this.anoAtualIndice].nome;
-    this.buscarPorMesAno();
-  }
-
-  /**
-   * @description Método utilizado para obter o mês atual
-   *
-   */
-  private obterIndiceMesAnoAtual() {
-    const mesAtualPorExtenso = this.momentService.obterMesPorExtenso(new Date);
-    const anoAtual = this.momentService.obterDataQuebrada(new Date).ano;
-
-    this.meses.forEach((mes, indice) => {
-      if (mes.nome.toLocaleLowerCase() === mesAtualPorExtenso) {
-        this.mesAtualIndice = indice;
-        this.mesSelecionado = this.meses[this.mesAtualIndice].valor;
-      }
-    });
-
-    this.anos.forEach((ano, indice) => {
-      if (anoAtual == ano.nome) {
-        this.anoAtualIndice = indice;
-        this.anoSelecionado = this.anos[this.anoAtualIndice].nome;
-      }
-    });
-  }
-
-  private buscarPorMesAno() {
-    this.pagamentoService.filtrarMesAno(this.mesSelecionado, this.anoSelecionado).subscribe((response: Pagamentos) => {
-
-      if (!response.length) {
-        this.snackBarService.showSnackbar(`Nenhum pagamento registrado para o Mês ${this.mesSelecionado} de ${this.anoSelecionado}`);
-      }
-
-      this.listaAuxiliar = response;
-      this.dinheiroTotal = this.calculoService.calcularTotalPagamentos(this.listaAuxiliar);
-
-      this.loaderPagamentosService.loader = false;
-    });
-  }
 }
 

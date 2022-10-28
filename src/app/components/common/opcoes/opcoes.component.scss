@@ -1,0 +1,17 @@
+@import '../../../../assets/scss/variaveis.scss';
+
+::ng-deep mat-card.mat-card.mat-focus-indicator.card-pagamento.mat-elevation-z8 {
+  background-color: $dark-mode;
+}
+
+.olho-preco {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.icon-hide {
+  cursor: pointer;
+  color: #68d592;
+  margin-left: 10px;
+}

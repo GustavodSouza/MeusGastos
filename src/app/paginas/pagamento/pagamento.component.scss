@@ -17,12 +17,6 @@ mat-card,
   margin: 0 auto;
 }
 
-.icon-hide {
-  cursor: pointer;
-  color: #68d592;
-  margin-left: 10px;
-}
-
 .div-info,
 .div-mes-filtrado,
 .div-current-money {
@@ -31,30 +25,11 @@ mat-card,
   margin: 0 0 10px 0;
 }
 
-.positive {
-  color: rgb(0, 161, 54);
-}
-
-.negative {
-  color: rgb(163, 0, 0);
-}
-
-.olho-preco {
-  margin-top: 10px;
-  display: flex;
-  align-items: center;
-}
-
 ::ng-deep mat-panel-title {
   font-size: 1.5em;
 }
 
-::ng-deep mat-expansion-panel,
-mat-card {
-  border-radius: 10px !important;
-}
-
-.buttons > * {
+app-button {
   margin-right: 10px;
 }
 
@@ -72,14 +47,6 @@ mat-card {
 
 .container {
   width: 100%;
-}
-
-.selecionar-mes {
-  width: 50%;
-
-  h1 {
-    margin: 0 10px;
-  }
 }
 
 ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {

@@ -8,24 +8,13 @@
       </mat-expansion-panel-header>
 
       <form [formGroup]="formulario">
-        <div>
-          <app-input formControlName="descricao">Descrição do item</app-input>
-        </div>
-
-        <div>
-          <app-input tipo="number" formControlName="preco">Preço pago</app-input>
-        </div>
-
-        <div>
-          <app-date-picker formControlName="dataPagamento"></app-date-picker>
-        </div>
-
-        <div class="buttons">
-          <app-button [disabled]="!formulario.valid" background="sucesso" label="label-branco" (evento)="adicionarNovoPagamento()">Cadastrar</app-button>
-          <app-button background="branco" label="label-preto" (evento)="formulario.reset()">Limpar</app-button>
-        </div>
-
+        <app-input formControlName="descricao">Descrição do item</app-input>
+        <app-input tipo="number" formControlName="preco">Preço pago</app-input>
+        <app-date-picker formControlName="dataPagamento"></app-date-picker>
+        <app-button [disabled]="!formulario.valid" background="sucesso" label="label-branco" (evento)="adicionarNovoPagamento()">Cadastrar</app-button>
+        <app-button background="branco" label="label-preto" (evento)="limparFormulario()">Limpar</app-button>
       </form>
+
     </mat-expansion-panel>
     <!-- <mat-expansion-panel #expansivelFiltros>
       <mat-expansion-panel-header>
@@ -78,30 +67,11 @@
     </mat-card-title>
     <mat-card-content>
       <div class="informacoes">
-        <div class="div-info" *ngIf="!mesFiltrado && !diaFiltrado">
+        <div class="div-info">
           <span>Data atual:</span>
           <span class="bold margin-left">{{
             diaAtual | date: "dd/MM/YYYY"
           }}</span>
-        </div>
-
-        <div class="div-info" *ngIf="mesFiltrado || diaFiltrado">
-          <span>Filtro aplicado para: </span>
-          <span class="bold" *ngIf="mesFiltrado">{{
-            mesFiltrado | titlecase
-          }}</span>
-          <span class="bold" *ngIf="diaFiltrado">{{ diaFiltrado }}</span>
-
-          <div *ngIf="diaFiltrado || mesFiltrado">
-            <button
-              class="button-clear"
-              mat-raised-button
-              color="primary"
-              (click)="clearFilter()"
-            >
-              Limpar
-            </button>
-          </div>
         </div>
 
         <div class="div-info">
@@ -156,25 +126,8 @@
     </mat-card-content>
   </mat-card>
 
-  <mat-card class="card-pagamento mat-elevation-z8">
-    <mat-card-title class="title-card">
-      <span class="info-span"> Opções </span>
-    </mat-card-title>
-    <mat-card-content>
-      <div class="olho-preco">
-        <h4>
-          {{ tabelaService.ocultar ? "Mostrar" : "Ocultar" }} preço da tabela:
-        </h4>
-        <mat-icon
-          class="icon-hide"
-          (click)="tabelaService.ocultar = !tabelaService.ocultar"
-          >{{
-            tabelaService.ocultar ? "visibility" : "visibility_off"
-          }}</mat-icon
-        >
-      </div>
-    </mat-card-content>
-  </mat-card>
+  <app-opcoes></app-opcoes>
+
   <div class="mat-elevation-z8">
     <div class="filtro-mes container flex">
       <div class="filtro">
@@ -186,19 +139,9 @@
           placeholder="Insira a descrição do item"
         />
       </div>
-      <div class="flex ">
-        <div class="selecionar-mes flex margin-right">
-          <fa-icon (click)="mudarMes('mesAnterior')" [icon]="icones.faArrowCircleLeft"></fa-icon>
-          <h1 class="bold">{{ retornaMesAtual | titlecase }}</h1>
-          <fa-icon (click)="mudarMes('mesSucessor')" [icon]="icones.faArrowCircleRight"></fa-icon>
-        </div>
-        <div class="selecionar-mes flex">
-          <fa-icon (click)="mudarAno('anoAnterior')" [icon]="icones.faArrowCircleLeft"></fa-icon>
-          <h1 class="bold">{{ retornaAnoAtual }}</h1>
-          <fa-icon (click)="mudarAno('anoSucessor')" [icon]="icones.faArrowCircleRight"></fa-icon>
-        </div>
-      </div>
+      <app-seletor-datas (lista)="setPagamentos = $event" (dinheiroTotal)="setDinheiroTotal = $event"></app-seletor-datas>
     </div>
+
     <app-tabela
       [dados]="listaAuxiliar"
       [colunas]="colunas"
@@ -206,5 +149,6 @@
       (deletarEmit)="deletarPagamento($event)"
     >
     </app-tabela>
+
   </div>
 </section>

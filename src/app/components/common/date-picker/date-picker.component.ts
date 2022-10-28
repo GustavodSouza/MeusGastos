@@ -33,11 +33,7 @@ export class DatePickerComponent implements ControlValueAccessor {
   }
 
   onInput(value) {
-    console.log('Picker',value);
-
-    if(this.onChange) {
-      this.onChange(value);
-    }
+    this.onChange(value);
   }
 
 }

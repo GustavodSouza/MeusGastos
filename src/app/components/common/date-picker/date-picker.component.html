@@ -4,9 +4,9 @@
       matInput
       (click)="picker.open()"
       [matDatepicker]="picker"
-      (input)="onInput($event.target.value)"
+      (dateInput)="onInput($event.target.value)"
       (blur)="onInput($event.target.value)"
-      (change)="onInput($event.target.value)"
+      (dateChange)="onInput($event.target.value)"
       required
     />
     <mat-datepicker-toggle

@@ -37,6 +37,8 @@ import { TabelaComponent } from './components/common/tabela/tabela.component';
 import { MenuComponent } from './shared/components/menu/menu.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { InputComponent } from './components/common/input/input.component';
+import { SeletorDatasComponent } from './components/common/seletor-datas/seletor-datas.component';
+import { OpcoesComponent } from './components/common/opcoes/opcoes.component';
 
 registerLocaleData(localePt);
 @NgModule({
@@ -55,7 +57,9 @@ registerLocaleData(localePt);
     TabelaComponent,
     MenuComponent,
     DatePickerComponent,
-    InputComponent
+    InputComponent,
+    SeletorDatasComponent,
+    OpcoesComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [

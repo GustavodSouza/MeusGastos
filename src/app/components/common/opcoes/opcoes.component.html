@@ -1,0 +1,19 @@
+<mat-card class="card-pagamento mat-elevation-z8">
+  <mat-card-title class="title-card">
+    <span class="info-span"> Opções </span>
+  </mat-card-title>
+  <mat-card-content>
+    <div class="olho-preco">
+      <h4>
+        {{ ocultarDados ? "Mostrar" : "Ocultar" }} preço da tabela:
+      </h4>
+      <mat-icon
+        class="icon-hide"
+        (click)="mostrarEsconderPrecos()"
+        >{{
+          ocultarDados ? "visibility" : "visibility_off"
+        }}</mat-icon
+      >
+    </div>
+  </mat-card-content>
+</mat-card>
