@@ -31,11 +31,11 @@ button {
 }
 
 .label-branco {
-  color: #fff;
+  color: $branco;
 }
 
 .label-preto {
-  color: #000;
+  color: $preto;
 }
 
 ::ng-deep .mat-raised-button.mat-button-disabled.mat-button-disabled {

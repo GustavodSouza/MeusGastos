@@ -16,10 +16,11 @@ td, th {
   color: $branco !important;
 }
 
-::ng-deep .mat-menu-content.ng-tns-c44-15 {
+::ng-deep .mat-menu-content {
   background-color: $dark-mode;
 }
 
 .icone-opcoes {
   color: $branco;
 }
+

@@ -1,13 +1,9 @@
-<h1 mat-dialog-title>Deseja excluir este item '{{ data.item }}' ?</h1>
+<h1 mat-dialog-title>Deseja excluir este item '{{ data.item }}'?</h1>
 <div mat-dialog-actions>
   <div class="buttons">
-    <button class="button-yes" mat-button (click)="closeDialog(true)">
-      Sim
-    </button>
+    <app-button background="sucesso" (evento)="closeDialog(true)">Sim</app-button>
   </div>
   <div>
-    <button class="button-no" mat-button (click)="closeDialog(false)">
-      Não
-    </button>
+    <app-button background="erro" (evento)="closeDialog(false)">Não</app-button>
   </div>
 </div>

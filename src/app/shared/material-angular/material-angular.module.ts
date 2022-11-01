@@ -43,7 +43,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MatSelectModule,
     MatProgressBarModule,
   ],
-  exports: [MatButtonModule,
+  exports: [
+    MatButtonModule,
     MatGridListModule,
     MatCardModule,
     MatInputModule,

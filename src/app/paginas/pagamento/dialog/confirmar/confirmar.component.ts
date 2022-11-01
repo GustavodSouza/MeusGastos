@@ -17,6 +17,8 @@ export class ConfirmarDialogComponent implements OnInit {
   }
 
   public closeDialog(choice: boolean): void {
+    console.log('Teste');
+
     this.dialogRef.close(choice);
   }
 }

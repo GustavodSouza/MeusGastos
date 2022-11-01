@@ -130,15 +130,7 @@
 
   <div class="mat-elevation-z8">
     <div class="filtro-mes container flex">
-      <div class="filtro">
-        <h1>Filtrar por descrição:</h1>
-        <input
-          type="search"
-          name="filtrar"
-          [(ngModel)]="filtrar"
-          placeholder="Insira a descrição do item"
-        />
-      </div>
+      <app-input-filtro [dados]="dados" (listaFiltrada)="listaAuxiliar = $event"></app-input-filtro>
       <app-seletor-datas (lista)="setPagamentos = $event" (dinheiroTotal)="setDinheiroTotal = $event"></app-seletor-datas>
     </div>
 
@@ -149,6 +141,6 @@
       (deletarEmit)="deletarPagamento($event)"
     >
     </app-tabela>
-
   </div>
+
 </section>

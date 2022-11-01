@@ -57,6 +57,7 @@ export class SeletorDatasComponent implements OnInit {
         this.mesAtualIndice += + 1;
       }
     }
+    this.loaderPagamentosService.loaderAtivo = true;
     this.mesSelecionado = this.meses[this.mesAtualIndice].valor;
     this.buscarPorMesAno();
   }
@@ -76,7 +77,7 @@ export class SeletorDatasComponent implements OnInit {
         this.anoAtualIndice += + 1;
       }
     }
-
+    this.loaderPagamentosService.loaderAtivo = true;
     this.anoSelecionado = this.anos[this.anoAtualIndice].nome;
     this.buscarPorMesAno();
   }
