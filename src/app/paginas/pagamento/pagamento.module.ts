@@ -1,3 +1,4 @@
+import { ConfirmarDialogModule } from './dialog/confirmar/confirmar.module';
 import { InformacaoModule } from './../../components/common/informacao/informacao.module';
 import { CardModule } from './../../components/common/card/card.module';
 import { AccordionModule } from './../../components/common/accordion/accordion.module';
@@ -37,7 +38,8 @@ import { SeletorDatasModule } from 'src/app/components/common/seletor-datas/sele
     InputFiltroModule,
     AccordionModule,
     CardModule,
-    InformacaoModule
+    InformacaoModule,
+    ConfirmarDialogModule
   ],
   exports: [
   ],

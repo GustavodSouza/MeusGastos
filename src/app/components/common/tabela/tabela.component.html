@@ -47,4 +47,7 @@
   <tr mat-header-row *matHeaderRowDef="colunas"></tr>
   <tr mat-row *matRowDef="let row; columns: colunas"></tr>
 </table>
+
+<div class="lista-vazia" *ngIf="!listaFiltrada.data.length">Nenhum dado encontrado!</div>
+
 <mat-paginator [pageSizeOptions]="[5, 10, 20, 30]"></mat-paginator>

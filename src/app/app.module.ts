@@ -17,7 +17,6 @@ import { registerLocaleData } from '@angular/common';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MaterialModule } from './shared/material-angular/material-angular.module';
 import { EntrarComponent } from './paginas/login/entrar/entrar.component';
-import { ConfirmarDialogComponent } from './paginas/pagamento/dialog/confirmar/confirmar.component';
 import { MenuComponent } from './components/common/menu/menu.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
@@ -27,7 +26,6 @@ registerLocaleData(localePt);
     AppComponent,
     ToolbarComponent,
     EntrarComponent,
-    ConfirmarDialogComponent,
     MenuComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

@@ -1,6 +1,6 @@
+import { ButtonModule } from './../../../../components/common/button/button.module';
 import { MaterialModule } from './../../../../shared/material-angular/material-angular.module';
 import { ConfirmarDialogComponent } from './confirmar.component';
-import { ButtonModule } from './../../../../components/common/button/button.module';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -8,10 +8,10 @@ import { CommonModule } from '@angular/common';
   declarations: [ConfirmarDialogComponent],
   imports: [
     CommonModule,
-    ButtonModule,
-    MaterialModule
+    MaterialModule,
+    ButtonModule
   ],
-  exports: [ConfirmarDialogComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  exports: [ConfirmarDialogComponent]
 })
-export class ConfirmarModule { }
+export class ConfirmarDialogModule { }

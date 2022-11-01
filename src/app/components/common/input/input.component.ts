@@ -15,9 +15,10 @@ import { Component, forwardRef, Input } from '@angular/core';
 })
 export class InputComponent implements ControlValueAccessor {
 
-  @Input() tipo = 'text';
-
   value = '';
+
+  @Input() tipo = 'text';
+  @Input() isLimparInput = false;
 
   onChange: any;
   onTouch: any;
@@ -31,6 +32,9 @@ export class InputComponent implements ControlValueAccessor {
   }
 
   writeValue(value: string) {
+    if (value == null) {
+      this.value = '';
+    }
     this.value = value;
   }
 

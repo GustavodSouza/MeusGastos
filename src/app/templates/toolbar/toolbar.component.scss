@@ -1,5 +1,5 @@
-@import '../../../assets/scss/variaveis.scss';
-@import '../../../assets/scss/mobile-style/toolbar-mobile.scss';
+@import '/src/assets/scss/variaveis.scss';
+@import '/src/assets/scss/mobile-style/toolbar-mobile.scss';
 
 .toolbar {
   display: flex;
@@ -63,4 +63,9 @@ li:hover {
 
 .avatar:hover {
   box-shadow: 0 0 5px 2px $branco;
+}
+
+// Cor do menu avatar
+::ng-deep .mat-menu-content.ng-tns-c44-0 {
+  background-color: $branco !important;
 }

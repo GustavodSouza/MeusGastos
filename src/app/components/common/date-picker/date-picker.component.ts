@@ -29,6 +29,9 @@ export class DatePickerComponent implements ControlValueAccessor {
   }
 
   writeValue(value) {
+    if (value == null) {
+      this.value = '';
+    }
     this.value = value;
   }
 

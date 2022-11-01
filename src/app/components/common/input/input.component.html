@@ -2,5 +2,5 @@
   <mat-label>
     <ng-content></ng-content>
   </mat-label>
-  <input [type]="tipo" matInput (input)="onInput($event.target.value)" required />
+  <input [type]="tipo" matInput [(ngModel)]="value" (input)="onInput($event.target.value)" required />
 </mat-form-field>

@@ -1,9 +1,9 @@
 <h1 mat-dialog-title>Deseja excluir este item '{{ data.item }}'?</h1>
 <div mat-dialog-actions>
   <div class="buttons">
-    <app-button background="sucesso" (evento)="closeDialog(true)">Sim</app-button>
+    <app-button background="sucesso" label="label-branco" (evento)="deletarItem(true)">Sim</app-button>
   </div>
   <div>
-    <app-button background="erro" (evento)="closeDialog(false)">Não</app-button>
+    <app-button background="erro" (evento)="deletarItem(false)">Não</app-button>
   </div>
 </div>

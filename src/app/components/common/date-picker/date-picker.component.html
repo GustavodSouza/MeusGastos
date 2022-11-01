@@ -4,6 +4,7 @@
       matInput
       (click)="picker.open()"
       [matDatepicker]="picker"
+      [(ngModel)]="value"
       (dateInput)="onInput($event.target.value)"
       (blur)="onInput($event.target.value)"
       (dateChange)="onInput($event.target.value)"

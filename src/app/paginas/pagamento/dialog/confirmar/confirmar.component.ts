@@ -16,9 +16,7 @@ export class ConfirmarDialogComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public closeDialog(choice: boolean): void {
-    console.log('Teste');
-
-    this.dialogRef.close(choice);
+  deletarItem(isDeletarItem: boolean) {
+    this.dialogRef.close(isDeletarItem);
   }
 }

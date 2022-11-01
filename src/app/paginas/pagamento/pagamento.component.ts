@@ -136,6 +136,9 @@ export class PagamentoComponent implements OnInit {
 
   limparFormulario(): void {
     this.formulario.reset();
+    this.formulario.markAsPristine();
+    this.formulario.markAsUntouched();
+    this.formulario.updateValueAndValidity();
   }
 
   set setDinheiroTotal(dinheiroTotal: number) {
