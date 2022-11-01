@@ -1,0 +1,14 @@
+@import '../../../../assets/scss/variaveis.scss';
+
+mat-card {
+  margin: 20px 0 20px 0;
+  background-color: $dark-mode;
+}
+
+@media (max-width: 800px) {
+  mat-card-title, mat-card-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

@@ -1,7 +1,7 @@
-import { PerfilService } from '../../shared/services/perfil.service';
+import { PerfilService } from '../../utils/perfil.service';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MomentService } from 'src/app/shared/services/moment.service';
+import { MomentService } from 'src/app/utils/moment.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { SaldoService } from './services/saldo.service';
 import { PagamentoService } from './services/pagamento.service';
@@ -28,7 +28,6 @@ export class PagamentoComponent implements OnInit {
   colunas: Array<string> = ['descricao', 'preco', 'dataPagamento', 'acoes'];
 
   salarioRecebidoMes = 0;
-  diaAtual = new Date();
   dados: Pagamentos;
   listaAuxiliar: Pagamentos;
 
@@ -53,7 +52,6 @@ export class PagamentoComponent implements OnInit {
   public ngOnInit(): void {
     this.inicializarFormulario();
     this.buscarTodosPagamentos();
-    // this.buscarSaldoDoMes();
 
   }
 
@@ -92,14 +90,6 @@ export class PagamentoComponent implements OnInit {
         this.pagamentoService.deletarPagamento(item.key, item);
 
         this.buscarTodosPagamentos();
-
-        // TODO: Consertar
-
-        // if (this.salarioRecebidoMes !== 0) {
-        //   const novoValor = this.calculoService.somarSaldo(this.salarioRecebidoMes, item.preco);
-
-        //   this.saldoService.atualizarSaldoDoMes(this.key, { saldo: novoValor } as Saldo);
-        // }
       }
     });
   }
@@ -141,65 +131,12 @@ export class PagamentoComponent implements OnInit {
       this.pagamentoService.adicionarNovoPagamento(this.formulario.value);
       this.limparFormulario();
       this.buscarTodosPagamentos();
-
-     // this.definirConsulta(this.formulario.value.dataPagamento);
-
-      // if (this.salarioRecebidoMes) {
-      //   const total = this.calculoService.subtrairSaldo(this.salarioRecebidoMes, this.formulario.value.preco);
-      //   this.saldoService.atualizarSaldoDoMes(this.key, { saldo: total } as Saldo);
-      // }
     }
   }
-
-  // private definirConsulta(data: any): void {
-  //   if (this.mesFiltrado) {
-  //     this.filtrarPorMes('', data);
-  //   } else {
-  //     this.buscarTodosPagamentos();
-  //   }
-  // }
 
   limparFormulario(): void {
     this.formulario.reset();
   }
-
-  // public validCurrentMoney(): string {
-  //   return Math.sign(this.salarioRecebidoMes) === 1 ? 'positive' : 'negative';
-  // }
-
-  // async buscarSaldoDoMes(): Promise<void> {
-
-  //   (await this.saldoService.buscarSaldoDoMes()).subscribe((saldo: Saldos) => {
-  //     const saldoCorrente: Saldos = saldo.filter((filter: Saldo) =>
-  //       this.momentService.obterDataQuebrada(filter.data).mes === this.momentService.obterDataQuebrada(new Date()).mes);
-
-  //     if (!saldo.length || !saldoCorrente.length) {
-  //       this.saldoService.criarSaldoDoMes(); // Se não existe, cria o saldo
-  //     } else if (this.momentService.obterDataQuebrada(saldoCorrente[0]?.data).mes ===
-  //       this.momentService.obterDataQuebrada(new Date()).mes) {
-  //       this.salarioRecebidoMes = saldoCorrente[0]?.saldo;
-  //       this.key = saldoCorrente[0]?.key;
-  //     }
-  //   });
-  // }
-  // addMoney(): void {
-  //   this.dialog.open(AdicionarSaldoDialogComponent, {
-  //     data: {
-  //       key: this.key,
-  //       saldo: this.salarioRecebidoMes
-  //     }
-  //   }).afterClosed().subscribe((response) => {
-  //     if (response) {
-  //       const total = this.calculoService.subtrairSaldo(this.salarioRecebidoMes, this.dinheiroTotal);
-
-  //       this.saldoService.atualizarSaldoDoMes(this.key, { saldo: total } as Saldo);
-  //     }
-  //   });
-  // }
-
-  // removeCurrentMoney(): void {
-  //   this.saldoService.deletarSaldoDoMes(this.key);
-  // }
 
   set setDinheiroTotal(dinheiroTotal: number) {
     this.dinheiroTotal = dinheiroTotal;
@@ -209,10 +146,5 @@ export class PagamentoComponent implements OnInit {
     this.listaAuxiliar = pagamentos;
     this.dados = pagamentos;
   }
-
-  receberListaFiltrada(listaFiltrada: Pagamentos) {
-    this.listaAuxiliar = listaFiltrada;
-  }
-
 }
 

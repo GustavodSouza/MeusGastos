@@ -1,12 +1,7 @@
 <app-loader-pagamentos></app-loader-pagamentos>
 
 <section class="section-container">
-  <mat-accordion multi>
-    <mat-expansion-panel #expansivelNovoPagamento>
-      <mat-expansion-panel-header>
-        <mat-panel-title> Cadastrar Novo Pagamento </mat-panel-title>
-      </mat-expansion-panel-header>
-
+    <app-accordion painelTitulo="Cadastrar Novo Pagamento">
       <form [formGroup]="formulario">
         <app-input formControlName="descricao">Descrição do item</app-input>
         <app-input tipo="number" formControlName="preco">Preço pago</app-input>
@@ -14,119 +9,16 @@
         <app-button [disabled]="!formulario.valid" background="sucesso" label="label-branco" (evento)="adicionarNovoPagamento()">Cadastrar</app-button>
         <app-button background="branco" label="label-preto" (evento)="limparFormulario()">Limpar</app-button>
       </form>
+    </app-accordion>
 
-    </mat-expansion-panel>
-    <!-- <mat-expansion-panel #expansivelFiltros>
-      <mat-expansion-panel-header>
-        <mat-panel-title> Filtro </mat-panel-title>
-      </mat-expansion-panel-header>
+    <app-card tituloCard="Informações">
+      <app-informacao [dinheiroTotal]="dinheiroTotal"></app-informacao>
+    </app-card>
 
-      <div>
-        <mat-form-field class="example-full-width" appearance="fill">
-          <input
-            matInput
-            #inputFiltroDia
-            (dateChange)="filtrarPorDia($event.target.value)"
-            (click)="picker2.open()"
-            [matDatepicker]="picker2"
-            placeholder="Filtrar por dia"
-          />
-          <mat-datepicker-toggle
-            matSuffix
-            [for]="picker2"
-          ></mat-datepicker-toggle>
-          <mat-datepicker #picker2></mat-datepicker>
-        </mat-form-field>
-      </div>
+    <app-card tituloCard="Opções">
+      <app-opcoes></app-opcoes>
+    </app-card>
 
-      <mat-form-field appearance="fill">
-        <mat-select
-          #inputFiltroMes
-          placeholder="Filtrar por mês"
-          (valueChange)="filtrarPorMes($event)"
-        >
-          <mat-option [value]="mes" *ngFor="let mes of meses">
-            {{ mes.nome }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-
-      <div class="buttons">
-        <div class="button">
-          <button mat-raised-button color="info" (click)="clearFilter()">
-            Limpar
-          </button>
-        </div>
-      </div>
-    </mat-expansion-panel> -->
-  </mat-accordion>
-
-  <mat-card class="card-pagamento mat-elevation-z8">
-    <mat-card-title class="title-card">
-      <span class="info-span"> Informações </span>
-    </mat-card-title>
-    <mat-card-content>
-      <div class="informacoes">
-        <div class="div-info">
-          <span>Data atual:</span>
-          <span class="bold margin-left">{{
-            diaAtual | date: "dd/MM/YYYY"
-          }}</span>
-        </div>
-
-        <div class="div-info">
-          <span>Total de gastos do mês: </span>
-          <span class="bold margin-left">{{
-            dinheiroTotal | currency: "R$"
-          }}</span>
-        </div>
-        <!-- <div class="div-current-money">
-          <div class="info-current-money">
-            <span
-              >Simulação de salário restante:
-              <strong
-                [ngClass]="{
-                  positive: this.salarioRecebidoMes >= 0,
-                  negative: this.salarioRecebidoMes <= 0
-                }"
-              >
-                {{
-                  !salarioRecebidoMes
-                    ? "R$ 0"
-                    : (salarioRecebidoMes | currency: "R$")
-                }}
-              </strong>
-            </span>
-          </div>
-          <div class="buttons margin-left">
-            <div class="margin-right">
-              <button
-                class="button-clear"
-                mat-raised-button
-                color="primary"
-                (click)="addMoney()"
-              >
-                {{ !salarioRecebidoMes ? "Inserir" : "Atualizar" }}
-              </button>
-            </div>
-            <div>
-              <button
-                *ngIf="salarioRecebidoMes"
-                class="button-clear"
-                mat-raised-button
-                color="warn"
-                (click)="removeCurrentMoney()"
-              >
-                Remover
-              </button>
-            </div>
-          </div>
-        </div> -->
-      </div>
-    </mat-card-content>
-  </mat-card>
-
-  <app-opcoes></app-opcoes>
 
   <div class="mat-elevation-z8">
     <div class="filtro-mes container flex">

@@ -1,5 +1,5 @@
 import { LoginService } from './../paginas/login/services/login.service';
-import { PerfilService } from 'src/app/shared/services/perfil.service';
+import { PerfilService } from 'src/app/utils/perfil.service';
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';

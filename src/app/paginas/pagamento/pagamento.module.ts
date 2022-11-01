@@ -1,3 +1,6 @@
+import { InformacaoModule } from './../../components/common/informacao/informacao.module';
+import { CardModule } from './../../components/common/card/card.module';
+import { AccordionModule } from './../../components/common/accordion/accordion.module';
 import { InputFiltroModule } from './../../components/common/input-filtro/input-filtro.module';
 import { MaterialModule } from './../../shared/material-angular/material-angular.module';
 import { InputModule } from './../../components/common/input/input.module';
@@ -31,7 +34,10 @@ import { SeletorDatasModule } from 'src/app/components/common/seletor-datas/sele
     InputModule,
     MaterialModule,
     SeletorDatasModule,
-    InputFiltroModule
+    InputFiltroModule,
+    AccordionModule,
+    CardModule,
+    InformacaoModule
   ],
   exports: [
   ],

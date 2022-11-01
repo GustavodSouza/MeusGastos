@@ -1,26 +1,30 @@
 @import '../../../../assets/scss/variaveis.scss';
 
-table {
-  width: 100%;
-}
-
-.dark-mode, mat-paginator {
-  background-color: $dark-mode;
-}
-
-td, th {
+td,
+th,
+.icone-opcoes,
+::ng-deep th.mat-header-cell.cdk-header-cell.cdk-column-acoes.mat-column-acoes.ng-star-inserted {
   color: $branco;
 }
 
-::ng-deep th.mat-header-cell.cdk-header-cell.cdk-column-acoes.mat-column-acoes.ng-star-inserted {
-  color: $branco !important;
-}
-
+.dark-mode,
+mat-paginator,
+::ng-deep div#mat-select-0-panel,
 ::ng-deep .mat-menu-content {
   background-color: $dark-mode;
 }
 
-.icone-opcoes {
-  color: $branco;
+::ng-deep table.mat-table.cdk-table.mat-elevation-z8,
+mat-form-field,
+table {
+  width: 100%;
 }
 
+::ng-deep .mat-paginator-container {
+  display: flex;
+  justify-content: center !important;
+}
+
+::ng-deep th {
+  font-size: 30px;
+}

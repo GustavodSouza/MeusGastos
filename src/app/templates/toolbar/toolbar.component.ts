@@ -1,7 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/paginas/login/services/login.service';
-import { MenuService } from 'src/app/shared/components/menu/menu.service';
+import { MenuService } from 'src/app/components/common/menu/menu.service';
 import { ToolbarService } from './service/toolbar.service';
 
 interface Imenu {

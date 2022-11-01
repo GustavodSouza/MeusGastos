@@ -1,7 +1,6 @@
 @import "~material-icons/iconfont/material-icons.css";
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "./assets/scss/reset.scss";
-@import "./assets/scss/table.scss";
 
 body, html {
   font-family: "Open Sans", sans-serif;
@@ -13,8 +12,4 @@ body, html {
 
 * {
   scroll-behavior: smooth;
-}
-
-::ng-deep mat-form-field {
-  width: 100% !important;
 }

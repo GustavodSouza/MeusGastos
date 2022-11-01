@@ -1,0 +1,15 @@
+<div class="informacoes">
+  <div class="div-info">
+    <span>Data atual:</span>
+    <span class="bold margin-left">{{
+      diaAtual | date: "dd/MM/YYYY"
+    }}</span>
+  </div>
+
+  <div class="div-info">
+    <span>Total de gastos do mês: </span>
+    <span class="bold margin-left">{{
+      dinheiroTotal | currency: "R$"
+    }}</span>
+  </div>
+</div>

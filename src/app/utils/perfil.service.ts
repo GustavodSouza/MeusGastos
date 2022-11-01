@@ -1,4 +1,4 @@
-import { PerfilConstant } from './../constant/perfil-constant';
+import { PerfilConstant } from '../shared/constant/perfil-constant';
 import { Injectable } from '@angular/core';
 
 @Injectable({

@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { map } from 'rxjs/operators';
-import { PerfilService } from 'src/app/shared/services/perfil.service';
-import { SnackbarService } from 'src/app/shared/components/snackbar/snackbar.service';
+import { PerfilService } from 'src/app/utils/perfil.service';
+import { SnackbarService } from 'src/app/components/common/snackbar/snackbar.service';
 import { Pagamentos, Pagamento } from '../interface/pagamento.interface';
 import { Meses } from '../interface/mes.interface';
-import { MomentService } from 'src/app/shared/services/moment.service';
+import { MomentService } from 'src/app/utils/moment.service';
 @Injectable({
   providedIn: 'root'
 })

@@ -1,0 +1,27 @@
+@import '../../../../assets/scss/variaveis.scss';
+
+// Sobreposição na versão mobile
+::ng-deep .mat-expansion-panel:not(.mat-expanded):not([aria-disabled=true]) .mat-expansion-panel-header:hover,
+::ng-deep mat-expansion-panel.mat-expansion-panel.ng-tns-c143-1.ng-star-inserted {
+  background-color: $dark-mode;
+}
+
+::ng-deep .cdk-text-field-autofill-monitored:not(:-webkit-autofill) {
+  color: $preto !important;
+}
+
+::ng-deep .mat-expansion-indicator::after {
+  color: $branco;
+}
+
+mat-panel-title > span {
+  font-size: 24px;
+}
+
+@media (max-width: 800px) {
+  mat-panel-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
