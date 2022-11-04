@@ -1,3 +1,4 @@
+import { EditarPagamentoComponent } from './editar-pagamento/editar-pagamento.component';
 import { PerfilService } from '../../utils/perfil.service';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -13,6 +14,7 @@ import { ConfirmarDialogComponent } from './dialog/confirmar/confirmar.component
 import { LoaderPagamentosService } from 'src/app/components/common/loader-pagamentos/loader-pagamentos.service';
 import { TabelaService } from 'src/app/components/common/tabela/tabela.service';
 import * as _ from 'lodash';
+import { DialogoService } from 'src/app/shared/dialogo/dialogo.service';
 
 @Component({
   selector: 'app-pagamento',
@@ -47,6 +49,7 @@ export class PagamentoComponent implements OnInit {
     public dialogRefConfirm: MatDialogRef<ConfirmarDialogComponent>,
     public saldoService: SaldoService,
     public tabelaService: TabelaService,
+    private dialogoService: DialogoService
   ) {}
 
   public ngOnInit(): void {
@@ -81,11 +84,7 @@ export class PagamentoComponent implements OnInit {
 
   public deletarPagamento(item: Pagamento): void {
 
-    this.dialog.open(ConfirmarDialogComponent, {
-      data: {
-        item: item.descricao
-      },
-    }).afterClosed().subscribe(async (retorno) => {
+    this.dialogoService.abrirDialogo(ConfirmarDialogComponent, { item: item.descricao }).afterClosed().subscribe(async (retorno) => {
       if (retorno) {
         this.pagamentoService.deletarPagamento(item.key, item);
 
@@ -95,32 +94,32 @@ export class PagamentoComponent implements OnInit {
   }
 
   public editarPagamento(itemPagamento: Pagamento): void {
-    // this.dialog.open(EditarDialogComponent, {
-    //   data: {
-    //     key: itemPagamento.key,
-    //     dataDoItem: itemPagamento.dataPagamento,
-    //     formulario: this.formulario,
-    //   }
-    // }).afterClosed().subscribe((pagamento) => {
-    //   if (pagamento) {
-    //     this.pagamentoService.atualizarPagamento(pagamento.key, pagamento.data);
 
-    //     // TODO: Comparar dia e ano
+    const data = {
+      key: itemPagamento.key,
+      dataDoItem: itemPagamento.dataPagamento,
+      formulario: this.formulario,
+    }
 
-    //     // if (itemPagamento.dataPagamento !== pagamento.data.dataPagamento) {
-    //     //   this.pagamentoService.deletarPagamento(itemPagamento.key, itemPagamento);
-    //     // }
 
-    //     // if (this.salarioRecebidoMes) {
-    //     //   const total = (pagamento.isSubtrair) ?
-    //     //     this.calculoService.subtrairSaldo(this.salarioRecebidoMes, pagamento.diferencaEntreValores) :
-    //     //     this.calculoService.somarSaldo(this.salarioRecebidoMes, pagamento.diferencaEntreValores);
-    //     //   this.saldoService.atualizarSaldoDoMes(this.key, { saldo: total } as Saldo);
-    //     // }
+    this.dialogoService.abrirDialogo(EditarPagamentoComponent, data).afterClosed().subscribe((pagamento) => {
+        if (pagamento) {
+          this.pagamentoService.atualizarPagamento(pagamento.key, pagamento.data);
 
-    //    //  this.definirConsulta(itemPagamento.dataPagamento);
-    //   }
-    // });
+          if (itemPagamento.dataPagamento !== pagamento.data.dataPagamento) {
+            this.pagamentoService.deletarPagamento(itemPagamento.key, itemPagamento);
+          }
+
+        //   if (this.salarioRecebidoMes) {
+        //     const total = (pagamento.isSubtrair) ?
+        //       this.calculoService.subtrairSaldo(this.salarioRecebidoMes, pagamento.diferencaEntreValores) :
+        //       this.calculoService.somarSaldo(this.salarioRecebidoMes, pagamento.diferencaEntreValores);
+        //     this.saldoService.atualizarSaldoDoMes(this.key, { saldo: total } as Saldo);
+        // }
+
+        //   this.definirConsulta(itemPagamento.dataPagamento);
+        }
+      });
   }
 
   public adicionarNovoPagamento(): void {

@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class CalculoService {
 
   public calcularTotalPagamentos(data): number {
-    return data.reduce((total, numero) => total + parseInt(numero.preco), 0);
+    return data.reduce((total, numero) => total + parseFloat(numero.preco), 0);
   }
 
   public subtrairSaldo(valor1: number, valo2: number): number {

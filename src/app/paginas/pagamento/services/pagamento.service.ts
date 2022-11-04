@@ -76,7 +76,7 @@ export class PagamentoService {
       );
   }
 
-  public atualizarPagamento(key: string, pagamento: Pagamento): void {
+  public atualizarPagamento(key: string, pagamento: Pagamento) {
     const { ano, mes } = this.momentService.obterDataQuebrada(pagamento.dataPagamento);
 
     this.db.list(`${this.URL}/${ano}/${mes}`).update(key, pagamento).then(() => {

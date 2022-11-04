@@ -1,0 +1,7 @@
+<form [formGroup]="formulario" appTeclaPressionada>
+  <app-input formControlName="descricao">Descrição do item</app-input>
+  <app-input formControlName="preco" tipo="number">Preço pago</app-input>
+  <app-date-picker formControlName="dataPagamento"></app-date-picker>
+  <app-button background="sucesso" (evento)="salvarPagamento()">Salvar</app-button>
+  <app-button background="erro" (evento)="fecharDialogo()">Cancelar</app-button>
+</form>

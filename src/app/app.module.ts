@@ -1,3 +1,4 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouteGuardService } from './guard/route-guard.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -19,6 +20,7 @@ import { MaterialModule } from './shared/material-angular/material-angular.modul
 import { EntrarComponent } from './paginas/login/entrar/entrar.component';
 import { MenuComponent } from './components/common/menu/menu.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { TeclaPressionadaDirective } from './shared/diretivas/tecla-pressionada.directive';
 
 registerLocaleData(localePt);
 @NgModule({
@@ -27,6 +29,7 @@ registerLocaleData(localePt);
     ToolbarComponent,
     EntrarComponent,
     MenuComponent,
+    TeclaPressionadaDirective,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
@@ -34,6 +37,8 @@ registerLocaleData(localePt);
     BrowserAnimationsModule,
     AppRoutingModule,
     MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     HttpClientModule,

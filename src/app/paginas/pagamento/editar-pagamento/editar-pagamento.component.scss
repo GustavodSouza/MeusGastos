@@ -1,0 +1,9 @@
+@import '/src/assets/scss/variaveis.scss';
+
+app-button {
+  margin-right: 10px;
+}
+
+::ng-deep .mat-dialog-container {
+  background-color: $dark-mode;
+}
