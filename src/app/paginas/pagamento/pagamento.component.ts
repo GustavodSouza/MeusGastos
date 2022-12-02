@@ -10,7 +10,7 @@ import { CalculoService } from 'src/app/utils/calculo.service';
 import { MatSelect } from '@angular/material/select';
 import { MatExpansionPanel } from '@angular/material/expansion';
 import { Pagamento, Pagamentos } from './interface/pagamento.interface';
-import { ConfirmarDialogComponent } from './dialog/confirmar/confirmar.component';
+import { ConfirmarDialogComponent } from './confirmar/confirmar.component';
 import { LoaderPagamentosService } from 'src/app/components/common/loader-pagamentos/loader-pagamentos.service';
 import { TabelaService } from 'src/app/components/common/tabela/tabela.service';
 import * as _ from 'lodash';

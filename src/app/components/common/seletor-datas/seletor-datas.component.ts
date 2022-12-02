@@ -122,9 +122,7 @@ export class SeletorDatasComponent implements OnInit {
 
       this.dinheiroTotal.emit(this.calculoService.calcularTotalPagamentos(response));
       this.lista.emit(response);
-
       this.loaderPagamentosService.loader = false;
     });
   }
-
 }

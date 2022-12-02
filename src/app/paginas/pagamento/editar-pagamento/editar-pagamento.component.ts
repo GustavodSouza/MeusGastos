@@ -69,8 +69,6 @@ export class EditarPagamentoComponent implements OnDestroy {
       this.pagamentoService.atualizarPagamento(this.data.key, this.formulario.value)
       this.fecharDialogo();
     }
-
-    window.navigator.vibrate(2000);
   }
 
   fecharDialogo() {

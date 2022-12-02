@@ -1,4 +1,4 @@
-import { ConfirmarDialogComponent } from './../../paginas/pagamento/dialog/confirmar/confirmar.component';
+import { ConfirmarDialogComponent } from '../../paginas/pagamento/confirmar/confirmar.component';
 import { EditarPagamentoComponent } from './../../paginas/pagamento/editar-pagamento/editar-pagamento.component';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Directive, HostListener } from '@angular/core';

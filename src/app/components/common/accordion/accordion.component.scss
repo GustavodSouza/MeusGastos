@@ -1,9 +1,8 @@
 @import '/src/assets/scss/variaveis.scss';
 
 // Sobreposição na versão mobile
-::ng-deep .mat-expansion-panel:not(.mat-expanded):not([aria-disabled=true]) .mat-expansion-panel-header:hover,
-::ng-deep mat-expansion-panel.mat-expansion-panel.ng-tns-c143-1.ng-star-inserted {
-  background-color: $dark-mode;
+::ng-deep mat-expansion-panel.mat-expansion-panel {
+  background-color: $dark-mode !important;
 }
 
 ::ng-deep .cdk-text-field-autofill-monitored:not(:-webkit-autofill) {

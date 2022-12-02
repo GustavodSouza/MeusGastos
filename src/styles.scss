@@ -1,6 +1,7 @@
 @import "~material-icons/iconfont/material-icons.css";
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "./assets/scss/reset.scss";
+@import "src/assets/scss/variaveis.scss";
 
 body, html {
   font-family: "Open Sans", sans-serif;
@@ -12,4 +13,8 @@ body, html {
 
 * {
   scroll-behavior: smooth;
+}
+
+::ng-deep mat-expansion-panel.mat-expansion-panel.ng-tns-c143-25.ng-star-inserted {
+  background: $dark-mode !important;
 }
