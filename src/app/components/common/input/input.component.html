@@ -1,6 +1,6 @@
-<mat-form-field appearance="fill">
+<mat-form-field appearance="outline" [ngClass]="onClassLoader()">
   <mat-label>
     <ng-content></ng-content>
   </mat-label>
-  <input [type]="tipo" matInput [(ngModel)]="value" (input)="onInput($event.target.value)" required />
+  <input [type]="tipo" matInput [(ngModel)]="value" (input)="onInput($event.target.value)" [required]="isRequired" />
 </mat-form-field>

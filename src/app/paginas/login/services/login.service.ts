@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { PerfilService } from 'src/app/utils/perfil.service';
+import { PerfilService } from 'src/app/shared/utils/perfil.service';
 import firebase from 'firebase/compat/app';
 import { Subject } from 'rxjs';
 

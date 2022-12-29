@@ -50,4 +50,20 @@
       justify-content: center;
     }
   }
+
+  .inputs, .cards {
+    flex-direction: column;
+  }
+
+  .inputs > div {
+    width: 100%;
+  }
+
+  app-card {
+    width: 100% !important;
+  }
+
+  .input-filtro {
+    width: 80% !important;
+  }
 }

@@ -1,4 +1,4 @@
-import { MomentService } from './../../../utils/moment.service';
+import { MomentService } from '../../../shared/utils/moment.service';
 import { Pagamento } from 'src/app/paginas/pagamento/interface/pagamento.interface';
 import { PagamentoService } from './../services/pagamento.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';

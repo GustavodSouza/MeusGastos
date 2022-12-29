@@ -4,7 +4,7 @@
 .toolbar {
   display: flex;
   justify-content: space-between;
-  background-color: $dark-mode;
+ //  background-color: $dark-mode;
 }
 
 .toolbar > .logo > h3 {
@@ -30,25 +30,25 @@ li:hover {
 }
 
 .manterMarcado {
-  border-top: 3px solid $branco;
-  border-bottom: 3px solid $branco;
+  border-top: 3px solid $dark-mode;
+  border-bottom: 3px solid $dark-mode;
 }
 
 .efeitoHover {
-  border-top: 3px solid $dark-mode;
-  border-bottom: 3px solid $dark-mode;
+  border-top: 3px solid $branco;
+  border-bottom: 3px solid $branco;
   text-decoration: none;
   transition: 0.3s ease;
 }
 
 .efeitoHover:hover {
-  border-top: 3px solid $branco;
-  border-bottom: 3px solid $branco;
+  border-top: 3px solid $dark-mode;
+  border-bottom: 3px solid $dark-mode;
   padding: 3px 0;
 }
 
 .avatar {
-  background-color: $branco;
+  background-color: $preto;
   height: 50px;
   width: 50px;
   border-radius: 50px;
@@ -58,11 +58,11 @@ li:hover {
 }
 
 .avatar > span {
-  color: #000;
+  color: $branco;
 }
 
 .avatar:hover {
-  box-shadow: 0 0 5px 2px $branco;
+  box-shadow: 0 0 5px 2px $preto;
 }
 
 // Cor do menu avatar

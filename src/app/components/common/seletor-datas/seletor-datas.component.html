@@ -1,12 +1,12 @@
 <div class="container flex">
   <div class="selecionar-mes flex margin-right">
     <fa-icon (click)="mudarMes('mesAnterior')" [icon]="icones.faArrowCircleLeft"></fa-icon>
-    <h1 class="bold">{{ retornaMesAtual | titlecase }}</h1>
+    <h4 class="bold">{{ retornaMesAtual | titlecase }}</h4>
     <fa-icon (click)="mudarMes('mesSucessor')" [icon]="icones.faArrowCircleRight"></fa-icon>
   </div>
   <div class="selecionar-mes flex">
     <fa-icon (click)="mudarAno('anoAnterior')" [icon]="icones.faArrowCircleLeft"></fa-icon>
-    <h1 class="bold">{{ retornaAnoAtual }}</h1>
+    <h4 class="bold">{{ retornaAnoAtual }}</h4>
     <fa-icon (click)="mudarAno('anoSucessor')" [icon]="icones.faArrowCircleRight"></fa-icon>
   </div>
 </div>

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RouteGuardService } from './guard/route-guard.service';
+import { RouteGuardService } from './shared/guard/route-guard.service';
 import { EntrarComponent } from './paginas/login/entrar/entrar.component';
 import { PaginaNaoEncontradaComponent } from './paginas/pagina-nao-encontrada/pagina-nao-encontrada.component';
 

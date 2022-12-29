@@ -4,14 +4,14 @@ td,
 th,
 .icone-opcoes,
 ::ng-deep th.mat-header-cell.cdk-header-cell.cdk-column-acoes.mat-column-acoes.ng-star-inserted {
-  color: $branco;
+  color: $preto;
 }
 
 .dark-mode,
 mat-paginator,
 ::ng-deep div#mat-select-0-panel,
 ::ng-deep .mat-menu-tabela {
-  background-color: $dark-mode;
+//  background-color: $dark-mode;
 }
 
 ::ng-deep table.mat-table.cdk-table.mat-elevation-z8,

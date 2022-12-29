@@ -1,12 +1,12 @@
 import { EditarPagamentoComponent } from './editar-pagamento/editar-pagamento.component';
-import { PerfilService } from '../../utils/perfil.service';
+import { PerfilService } from '../../shared/utils/perfil.service';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MomentService } from 'src/app/utils/moment.service';
+import { MomentService } from 'src/app/shared/utils/moment.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { SaldoService } from './services/saldo.service';
 import { PagamentoService } from './services/pagamento.service';
-import { CalculoService } from 'src/app/utils/calculo.service';
+import { CalculoService } from 'src/app/shared/utils/calculo.service';
 import { MatSelect } from '@angular/material/select';
 import { MatExpansionPanel } from '@angular/material/expansion';
 import { Pagamento, Pagamentos } from './interface/pagamento.interface';
@@ -32,6 +32,8 @@ export class PagamentoComponent implements OnInit {
   salarioRecebidoMes = 0;
   dados: Pagamentos;
   listaAuxiliar: Pagamentos;
+
+  dataAtual = new Date();
 
   @ViewChild('inputFiltroDia') inputFiltroDia: ElementRef;
   @ViewChild('inputFiltroMes') inputFiltroMes: MatSelect;
@@ -147,6 +149,10 @@ export class PagamentoComponent implements OnInit {
   set setPagamentos(pagamentos: Pagamentos) {
     this.listaAuxiliar = pagamentos;
     this.dados = pagamentos;
+  }
+
+  set filtrarDescricao(descricao) {
+    this.listaAuxiliar = this.dados.filter((pagamento) => pagamento.descricao.toLowerCase().indexOf(descricao.toLowerCase()) > -1);
   }
 }
 

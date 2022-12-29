@@ -1,7 +1,7 @@
-import { CalculoService } from './../../../utils/calculo.service';
+import { CalculoService } from '../../../shared/utils/calculo.service';
 import { LoaderPagamentosService } from './../loader-pagamentos/loader-pagamentos.service';
 import { SnackbarService } from '../snackbar/snackbar.service';
-import { MomentService } from '../../../utils/moment.service';
+import { MomentService } from '../../../shared/utils/moment.service';
 import { PagamentoService } from './../../../paginas/pagamento/services/pagamento.service';
 import { Meses } from './../../../paginas/pagamento/interface/mes.interface';
 import { Pagamentos } from './../../../paginas/pagamento/interface/pagamento.interface';

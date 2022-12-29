@@ -2,7 +2,7 @@
 
 // Sobreposição na versão mobile
 ::ng-deep mat-expansion-panel.mat-expansion-panel {
-  background-color: $dark-mode !important;
+ //  background-color: $dark-mode !important;
 }
 
 ::ng-deep .cdk-text-field-autofill-monitored:not(:-webkit-autofill) {
@@ -10,7 +10,7 @@
 }
 
 ::ng-deep .mat-expansion-indicator::after {
-  color: $branco;
+  color: $preto;
 }
 
 mat-panel-title > span {

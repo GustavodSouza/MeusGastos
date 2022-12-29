@@ -1,13 +1,41 @@
-@import "/src/assets/scss/mobile-style/payments-mobile.scss";
+@import "/src/assets/scss/mobile-style/pagamentos-mobile.scss";
 @import "/src/assets/scss/util.scss";
 @import "/src/assets/scss/variaveis.scss";
 
 // Seta o 'padding' do elemento da tela
 .section-container {
-  width: calc(100% - 30px);
+  width: calc(95% - 30px);
   margin: 0 auto;
 }
 
 app-button {
   margin-right: 10px;
+}
+
+app-card {
+  width: 30%;
+}
+
+.cards, .inputs {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.input-filtro {
+  width: 20%;
+  margin: 5px 10px 5px 10px;
+}
+
+.filtro-mes {
+  display: flex;
+  align-items: center;
+}
+
+.filtro-mes > div {
+  margin-right: 10%;
+}
+
+.filtro-mes > div:nth-last-child(1) {
+  margin-bottom: 20px;
 }

@@ -19,6 +19,8 @@ export class InputComponent implements ControlValueAccessor {
 
   @Input() tipo = 'text';
   @Input() isLimparInput = false;
+  @Input() isPequeno = false;
+  @Input() isRequired = true;
 
   onChange: any;
   onTouch: any;
@@ -42,5 +44,13 @@ export class InputComponent implements ControlValueAccessor {
     if(this.onChange) {
       this.onChange(value);
     }
+  }
+
+  onClassLoader(): string {
+    if (this.isPequeno) {
+      return 'campo-menor';
+    }
+
+    return '';
   }
 }

@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { map } from 'rxjs/operators';
 import { SnackbarService } from 'src/app/components/common/snackbar/snackbar.service';
-import { MomentService } from 'src/app/utils/moment.service';
-import { PerfilService } from 'src/app/utils/perfil.service';
+import { MomentService } from 'src/app/shared/utils/moment.service';
+import { PerfilService } from 'src/app/shared/utils/perfil.service';
 import { Saldo } from '../interface/saldo.interface';
 
 @Injectable({

@@ -1,7 +1,7 @@
 @import './variaveis.scss';
 
 html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+ p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
@@ -19,7 +19,7 @@ time, mark, audio, video {
     font-size: 100%;
     font: inherit;
     vertical-align: baseline;
-    color: $branco;
+    // color: $branco;
 }
 
 article, aside, details, figcaption, figure,
@@ -51,13 +51,13 @@ table {
 }
 
 .mat-expansion-panel-header-title, .mat-expansion-panel-header-description {
-    color: $branco;
+   // color: $branco;
 }
 
 html {
-    background-color: $dark-mode;
+   // background-color: $dark-mode;
 }
 
 ::ng-deep mat-expansion-panel.mat-expansion-panel.ng-tns-c143-25.ng-star-inserted {
-  background: $dark-mode !important;
+  // background: $dark-mode !important;
 }
