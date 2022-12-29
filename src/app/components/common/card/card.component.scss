@@ -2,7 +2,12 @@
 
 mat-card {
   margin: 20px 0 20px 0;
-  // background-color: $dark-mode;
+}
+
+mat-card-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 @media (max-width: 800px) {
@@ -10,5 +15,9 @@ mat-card {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  fa-icon {
+    margin-left: 20px;
   }
 }

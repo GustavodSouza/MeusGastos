@@ -11,8 +11,9 @@
 }
 
 h2 {
-  font-size: 5rem;
-  padding-bottom: 10rem;
+  font-size: 3rem;
+  padding-bottom: 5rem;
+  color: $sucesso;
 }
 
 h3 {
@@ -22,7 +23,13 @@ h3 {
 
 img {
   height: 30%;
+  box-shadow: 0 0 10px 3px $preto;
   cursor: pointer;
+  border-radius: 20px;
+}
+
+img:hover {
+  box-shadow: 0 0 15px 3px $preto;
 }
 
 @media (max-width: 800px) {

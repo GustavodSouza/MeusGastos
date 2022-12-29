@@ -9,7 +9,7 @@ import { LoginService } from '../services/login.service';
   styleUrls: ['./entrar.component.scss']
 })
 export class EntrarComponent {
-
+  
   constructor(
     private loginService: LoginService,
     private router: Router,

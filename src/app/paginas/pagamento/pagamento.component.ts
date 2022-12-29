@@ -35,6 +35,8 @@ export class PagamentoComponent implements OnInit {
 
   dataAtual = new Date();
 
+  isValorOCulto = false;
+
   @ViewChild('inputFiltroDia') inputFiltroDia: ElementRef;
   @ViewChild('inputFiltroMes') inputFiltroMes: MatSelect;
   @ViewChild('expansivelNovoPagamento') expansivelNovoPagamento: MatExpansionPanel;
@@ -101,7 +103,7 @@ export class PagamentoComponent implements OnInit {
       key: itemPagamento.key,
       dataDoItem: itemPagamento.dataPagamento,
       formulario: this.formulario,
-    }
+    };
 
 
     this.dialogoService.abrirDialogo(EditarPagamentoComponent, data).afterClosed().subscribe((pagamento) => {
@@ -111,15 +113,6 @@ export class PagamentoComponent implements OnInit {
           if (itemPagamento.dataPagamento !== pagamento.data.dataPagamento) {
             this.pagamentoService.deletarPagamento(itemPagamento.key, itemPagamento);
           }
-
-        //   if (this.salarioRecebidoMes) {
-        //     const total = (pagamento.isSubtrair) ?
-        //       this.calculoService.subtrairSaldo(this.salarioRecebidoMes, pagamento.diferencaEntreValores) :
-        //       this.calculoService.somarSaldo(this.salarioRecebidoMes, pagamento.diferencaEntreValores);
-        //     this.saldoService.atualizarSaldoDoMes(this.key, { saldo: total } as Saldo);
-        // }
-
-        //   this.definirConsulta(itemPagamento.dataPagamento);
         }
       });
   }
@@ -137,9 +130,11 @@ export class PagamentoComponent implements OnInit {
 
   limparFormulario(): void {
     this.formulario.reset();
-    this.formulario.markAsPristine();
-    this.formulario.markAsUntouched();
-    this.formulario.updateValueAndValidity();
+  }
+
+  toogleVisibilidadeValor(): void {
+    this.isValorOCulto = !this.isValorOCulto;
+    this.tabelaService.ocultar = this.isValorOCulto;
   }
 
   set setDinheiroTotal(dinheiroTotal: number) {
@@ -151,7 +146,7 @@ export class PagamentoComponent implements OnInit {
     this.dados = pagamentos;
   }
 
-  set filtrarDescricao(descricao) {
+  set filtrarDescricao(descricao: string) {
     this.listaAuxiliar = this.dados.filter((pagamento) => pagamento.descricao.toLowerCase().indexOf(descricao.toLowerCase()) > -1);
   }
 }

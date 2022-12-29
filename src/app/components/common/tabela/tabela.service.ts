@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class TabelaService {
-  ocultar = true;
+  ocultar = false;
 
   set setOcultar(valor: boolean) {
     this.ocultar = valor;

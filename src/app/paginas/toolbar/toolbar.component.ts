@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/paginas/login/services/login.service';
 import { MenuService } from 'src/app/components/common/menu/menu.service';
@@ -14,12 +14,10 @@ interface Imenu {
   templateUrl: './toolbar.component.html',
   styleUrls: ['./toolbar.component.scss']
 })
-export class ToolbarComponent implements OnDestroy {
+export class ToolbarComponent {
 
-  public hamburguerActive = false;
   public nomeResumido: string;
   public esconderToolbar: boolean;
-  $subscription;
 
   public menu: Array<Imenu> = [
     {
@@ -39,17 +37,13 @@ export class ToolbarComponent implements OnDestroy {
     public menuService: MenuService,
   ) {
 
-    this.$subscription = this.toolbarService.getEsconderToolbar.subscribe((esconder: boolean) => {
+    this.toolbarService.getEsconderToolbar.subscribe((esconder: boolean) => {
       this.esconderToolbar = esconder;
     });
 
-    this.$subscription = this.loginService.primeiraLetraNome.subscribe((nomeResumido: string) => {
+    this.loginService.primeiraLetraNome.subscribe((nomeResumido: string) => {
       this.nomeResumido = nomeResumido;
     });
-  }
-
-  ngOnDestroy(): void {
-    this.$subscription.unsubscribe();
   }
 
   marcarItemMenu(path?: string): string {
@@ -71,8 +65,6 @@ export class ToolbarComponent implements OnDestroy {
     this.menuService.isAtivo = false;
     this.menuService.referencia.nativeElement.classList.value = '';
   }
-
-
 
   logout(): void {
     this.loginService.logout();

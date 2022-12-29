@@ -12,6 +12,10 @@ app-button {
   margin-right: 10px;
 }
 
+mat-icon {
+  margin-left: 10px;
+}
+
 app-card {
   width: 30%;
 }
@@ -38,4 +42,10 @@ app-card {
 
 .filtro-mes > div:nth-last-child(1) {
   margin-bottom: 20px;
+}
+
+.icon-hide {
+  cursor: pointer;
+  color: #68d592;
+  margin-left: 10px;
 }

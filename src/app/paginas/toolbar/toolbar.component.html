@@ -11,19 +11,6 @@
       >
         {{ item.nome }}
       </li>
-      <!-- <li
-        *ngIf="loginService.nomeUsuario !== null; else login"
-        [matMenuTriggerFor]="menuUsuario"
-        [ngClass]="marcarItemMenu()"
-      >{{ loginService.nomeUsuario }}</li>
-      <ng-template #login>
-        <li
-          routerLink="entrar"
-          [ngClass]="marcarItemMenu()"
-        >
-          Login
-        </li>
-      </ng-template> -->
       <li>
         <div [matMenuTriggerFor]="menuUsuario" class="avatar">
           <span>{{ nomeResumido }}</span>
@@ -31,6 +18,7 @@
       </li>
     </ul>
     <mat-menu class="mat-menu-toolbar" #menuUsuario="matMenu">
+      <button mat-menu-item routerLink="/editar-perfil">Editar Perfil</button>
       <button mat-menu-item (click)="logout()">Sair</button>
     </mat-menu>
   </div>
@@ -44,25 +32,26 @@
   <div [ngClass]="{'menu-mobile-desativado' : !menuService.isAtivo, 'menu-mobile-ativado' : menuService.isAtivo}">
     <ul>
       <li
-        *ngFor="let item of menu"
-        (click)="redirecionar(item.path)"
+      *ngFor="let item of menu"
+      (click)="redirecionar(item.path)"
       >
-        {{ item.nome }}
-      </li>
+      {{ item.nome }}
+    </li>
+    <li
+    *ngIf="loginService.nomeUsuario !== null; else login"
+    [matMenuTriggerFor]="menuUsuario"
+    >{{ loginService.nomeUsuario }}</li>
+    <ng-template #login>
       <li
-        *ngIf="loginService.nomeUsuario !== null; else login"
-        [matMenuTriggerFor]="menuUsuario"
-      >{{ loginService.nomeUsuario }}</li>
-      <ng-template #login>
-        <li
-          routerLink="entrar"
-        >
-          Login
-        </li>
-      </ng-template>
-    </ul>
-    <mat-menu #menuUsuario="matMenu">
-      <button mat-menu-item (click)="loginService.logout()">Sair</button>
-    </mat-menu>
-  </div>
+      routerLink="entrar"
+      >
+      Login
+    </li>
+  </ng-template>
+</ul>
+<mat-menu #menuUsuario="matMenu">
+  <button mat-menu-item routerLink="/editar-pagamento">Editar Perfil</button>
+  <button mat-menu-item (click)="loginService.logout()">Sair</button>
+</mat-menu>
+</div>
 </div>

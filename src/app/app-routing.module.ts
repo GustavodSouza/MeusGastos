@@ -22,6 +22,11 @@ const routes: Routes = [
     canActivate: [RouteGuardService]
   },
   {
+    path: 'editar-perfil',
+    loadChildren: () => import('./paginas/editar-perfil/editar-perfil.module').then((m) => m.EditarPerfilModule),
+    canActivate: [RouteGuardService]
+  },
+  {
     path: '**',
     component: PaginaNaoEncontradaComponent,
     canActivate: [RouteGuardService],

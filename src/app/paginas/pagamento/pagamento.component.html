@@ -2,18 +2,27 @@
 
 <section class="section-container">
   <div class="cards">
-    <app-card tituloCard="Data">
-      <h3>{{ dataAtual | date : "dd/MM/YYYY" }}</h3>
+    <app-card tituloCard="Data" icone="calendario">
+      <div class="flex">
+        <h3>{{ dataAtual | date : "dd/MM/YYYY" }}</h3>
+      </div>
     </app-card>
-    <app-card tituloCard="Total">
-      <h3>{{ dinheiroTotal | currency : "R$" }}</h3>
+    <app-card tituloCard="Total" icone="valor">
+      <div class="flex">
+        <h3>{{ isValorOCulto ? 'R$ ***' : (dinheiroTotal | currency : "R$") }}</h3>
+        <mat-icon class="icon-hide" (click)="toogleVisibilidadeValor()">{{
+          isValorOCulto ? "visibility" : "visibility_off"
+        }}</mat-icon>
+      </div>
     </app-card>
-    <app-card tituloCard="Ultima movimentação">
-      <h3>Em fase de teste</h3>
+    <app-card tituloCard="Ultimas Atualizações">
+      <div class="flex">
+        <h3>Em fase de teste</h3>
+      </div>
     </app-card>
   </div>
 
-  <app-card>
+  <app-card tituloCard="Novo lançamento">
     <form [formGroup]="formulario">
       <div class="inputs">
         <div>
@@ -39,55 +48,24 @@
             background="branco"
             label="label-preto"
             (evento)="limparFormulario()"
-            >Limpar</app-button>
+            >Limpar</app-button
+          >
         </div>
       </div>
     </form>
   </app-card>
-  <!-- <app-accordion painelTitulo="Cadastrar Novo Pagamento">
-      <form [formGroup]="formulario">
-        <app-input formControlName="descricao">Descrição do item</app-input>
-        <app-input tipo="number" formControlName="preco">Preço pago</app-input>
-        <app-date-picker formControlName="dataPagamento"></app-date-picker>
-        <app-button [disabled]="!formulario.valid" background="sucesso" label="label-branco" (evento)="adicionarNovoPagamento()">Cadastrar</app-button>
-        <app-button background="branco" label="label-preto" (evento)="limparFormulario()">Limpar</app-button>
-      </form>
-    </app-accordion> -->
-
-  <!-- <app-card tituloCard="Informações">
-      <app-informacao [dinheiroTotal]="dinheiroTotal"></app-informacao>
-    </app-card>
-
-    <app-card tituloCard="Opções">
-      <app-opcoes></app-opcoes>
-    </app-card> -->
 
   <div class="mat-elevation-z8">
-    <!-- <div class="filtro-mes container flex">
-      <app-input-filtro
-        [dados]="dados"
-        (listaFiltrada)="listaAuxiliar = $event"
-      ></app-input-filtro>
-      <app-seletor-datas
-        (lista)="setPagamentos = $event"
-        (dinheiroTotal)="setDinheiroTotal = $event"
-      ></app-seletor-datas>
-      <h4>
-        {{ true ? "Mostrar" : "Ocultar" }} preço da tabela:
-      </h4>
-      <mat-icon
-        class="icon-hide"
-        (click)="null"
-        >{{
-          true ? "visibility" : "visibility_off"
-        }}</mat-icon
-      >
-    </div> -->
     <div class="filtro-mes">
       <div class="input-filtro">
-        <app-input [isPequeno]="true" [isRequired]="false" [(ngModel)]="filtrarDescricao">Filtrar</app-input>
+        <app-input
+          [isPequeno]="true"
+          [isRequired]="false"
+          [(ngModel)]="filtrarDescricao"
+          >Filtrar</app-input
+        >
       </div>
-  
+
       <div>
         <app-seletor-datas
           (lista)="setPagamentos = $event"
@@ -95,9 +73,6 @@
         ></app-seletor-datas>
       </div>
 
-      <div>
-        <app-opcoes></app-opcoes>
-      </div>
     </div>
 
     <app-tabela

@@ -65,12 +65,10 @@ li:hover {
   box-shadow: 0 0 5px 2px $preto;
 }
 
-// Cor do menu avatar
-::ng-deep .mat-menu-content.ng-tns-c44-0 {
-  background-color: $branco !important;
+mat-toolbar {
+  background-color: $branco;
 }
 
-
-.mat-menu-toolbar {
-  background-color: $branco;
+h3 {
+  color: $sucesso;
 }

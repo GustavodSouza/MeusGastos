@@ -7,7 +7,6 @@ import localePt from '@angular/common/locales/pt';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { ToolbarComponent } from './templates/toolbar/toolbar.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
@@ -21,6 +20,7 @@ import { EntrarComponent } from './paginas/login/entrar/entrar.component';
 import { MenuComponent } from './components/common/menu/menu.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { TeclaPressionadaDirective } from './shared/diretivas/tecla-pressionada.directive';
+import { ToolbarComponent } from './paginas/toolbar/toolbar.component';
 
 registerLocaleData(localePt);
 @NgModule({

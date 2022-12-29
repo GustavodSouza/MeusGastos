@@ -1,6 +1,7 @@
 <mat-card class="card-pagamento mat-elevation-z8">
   <mat-card-title>
     <span> {{ tituloCard }} </span>
+    <fa-icon *ngIf="iconeSelecionado" [icon]="iconeSelecionado"></fa-icon>
   </mat-card-title>
   <mat-card-content>
     <ng-content></ng-content>
