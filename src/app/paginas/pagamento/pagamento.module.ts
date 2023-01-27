@@ -15,7 +15,7 @@ import { PagamentoComponent } from './pagamento.component';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PagamentoRoutingModule } from './pagamento-routing.module';
-import { SeletorDatasModule } from 'src/app/components/common/seletor-datas/seletor-datas.module';
+import { DropdownModule } from 'src/app/components/common/dropdown/dropdown.module';
 
 @NgModule({
   declarations: [
@@ -33,12 +33,12 @@ import { SeletorDatasModule } from 'src/app/components/common/seletor-datas/sele
     ButtonModule,
     InputModule,
     MaterialModule,
-    SeletorDatasModule,
     InputFiltroModule,
     AccordionModule,
     CardModule,
     InformacaoModule,
-    ConfirmarDialogModule
+    ConfirmarDialogModule,
+    DropdownModule
   ],
   exports: [
   ],

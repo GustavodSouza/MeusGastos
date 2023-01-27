@@ -1,0 +1,13 @@
+<div class="dropdown-data">
+  <mat-form-field appearance="outline">
+    <mat-select (ngModelChange)="changeMes($event)" [(ngModel)]="mesSelecionado">
+      <mat-option *ngFor="let item of meses" [value]="item.valor">{{ item.nome }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  
+  <mat-form-field appearance="outline">
+    <mat-select (ngModelChange)="changeAno($event)" [(ngModel)]="anoSelecionado">
+      <mat-option *ngFor="let item of anos" [value]="item.nome">{{ item.nome }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
