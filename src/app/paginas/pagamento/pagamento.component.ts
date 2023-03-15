@@ -15,6 +15,7 @@ import { LoaderPagamentosService } from 'src/app/components/common/loader-pagame
 import { TabelaService } from 'src/app/components/common/tabela/tabela.service';
 import * as _ from 'lodash';
 import { DialogoService } from 'src/app/shared/dialogo/dialogo.service';
+import { faCalendarAlt, faDollarSign } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-pagamento',
@@ -36,6 +37,11 @@ export class PagamentoComponent implements OnInit {
   dataAtual = new Date();
 
   isValorOCulto = false;
+
+  icones = {
+    faCalendarAlt,
+    faDollarSign
+  };
 
   @ViewChild('inputFiltroDia') inputFiltroDia: ElementRef;
   @ViewChild('inputFiltroMes') inputFiltroMes: MatSelect;

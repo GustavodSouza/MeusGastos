@@ -16,6 +16,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PagamentoRoutingModule } from './pagamento-routing.module';
 import { DropdownModule } from 'src/app/components/common/dropdown/dropdown.module';
+import { GastoEstatisticaPorcentagemModule } from 'src/app/components/common/gasto-estatistica-porcentagem/gasto-estatistica-porcentagem.module';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { DropdownModule } from 'src/app/components/common/dropdown/dropdown.modu
     CardModule,
     InformacaoModule,
     ConfirmarDialogModule,
-    DropdownModule
+    DropdownModule,
+    GastoEstatisticaPorcentagemModule
   ],
   exports: [
   ],

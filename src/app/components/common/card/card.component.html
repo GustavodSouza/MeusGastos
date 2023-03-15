@@ -1,7 +1,10 @@
 <mat-card class="card-pagamento mat-elevation-z8">
   <mat-card-title>
-    <span> {{ tituloCard }} </span>
-    <fa-icon *ngIf="iconeSelecionado" [icon]="iconeSelecionado"></fa-icon>
+    <span *ngIf="!isTextoAnimado; else textoAnimado"> {{ tituloCard }} </span>
+    <ng-template #textoAnimado>
+      <marquee scrolldelay="100">{{ tituloCard }}</marquee>
+    </ng-template>
+    <fa-icon *ngIf="icone" [icon]="icone"></fa-icon>
   </mat-card-title>
   <mat-card-content>
     <ng-content></ng-content>

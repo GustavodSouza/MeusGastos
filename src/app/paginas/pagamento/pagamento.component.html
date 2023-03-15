@@ -2,12 +2,12 @@
 
 <section class="section-container">
   <div class="cards">
-    <app-card tituloCard="Data" icone="calendario">
+    <app-card tituloCard="Data" [icone]="icones.faCalendarAlt">
       <div class="flex">
         <h3>{{ dataAtual | date : "dd/MM/YYYY" }}</h3>
       </div>
     </app-card>
-    <app-card tituloCard="Total" icone="valor">
+    <app-card tituloCard="Total" [icone]="icones.faDollarSign">
       <div class="flex">
         <h3>{{ isValorOCulto ? 'R$ ***' : (dinheiroTotal | currency : "R$") }}</h3>
         <mat-icon class="icon-hide" (click)="toogleVisibilidadeValor()">{{
@@ -15,9 +15,9 @@
         }}</mat-icon>
       </div>
     </app-card>
-    <app-card tituloCard="Ultimas Atualizações">
+    <app-card [isTextoAnimado]="true" tituloCard="Relação de gastos com o mês anterior">
       <div class="flex">
-        <h3>Em fase de teste</h3>
+        <app-gasto-estatistica-porcentagem></app-gasto-estatistica-porcentagem>
       </div>
     </app-card>
   </div>

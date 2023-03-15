@@ -25,6 +25,8 @@ export class DropdownComponent implements OnInit {
   @Output() dinheiroTotal = new EventEmitter();
   @Output() lista = new EventEmitter();
 
+  dinheiroTotalAux = 0;
+
   constructor(
     private momentService: MomentService,
     private pagamentoService: PagamentoService,
@@ -71,10 +73,25 @@ export class DropdownComponent implements OnInit {
       if (!response.length) {
         this.snackBarService.showSnackbar(`Nenhum pagamento registrado para o Mês ${this.mesSelecionado} de ${this.anoSelecionado}`);
       }
-
-      this.dinheiroTotal.emit(this.calculoService.calcularTotalPagamentos(response));
+      this.obterMesAnteriorCalculoPorcentagem();
+      this.dinheiroTotalAux = this.calculoService.calcularTotalPagamentos(response);
+      this.dinheiroTotal.emit(this.dinheiroTotalAux);
       this.lista.emit(response);
       this.loaderPagamentosService.loader = false;
+    });
+  }
+
+  public obterMesAnteriorCalculoPorcentagem() {
+    const mesAnteriorAoSelecionado = '0' + (parseInt(this.mesSelecionado, 10) - 1).toLocaleString();
+
+    this.pagamentoService.filtrarMesAno(mesAnteriorAoSelecionado, this.anoSelecionado).subscribe((response: Pagamentos) => {
+      const pagamentoMesAnterior = this.calculoService.calcularTotalPagamentos(response).toFixed();
+      const pagamentoMesAtual = this.dinheiroTotalAux.toFixed();
+
+      const divisao = (parseInt(pagamentoMesAtual, 10) / parseInt(pagamentoMesAnterior, 10)).toFixed(2);
+      
+      const porcentagem = (parseInt(divisao, 10) * 100).toFixed();
+      console.log(porcentagem);
     });
   }
 }
