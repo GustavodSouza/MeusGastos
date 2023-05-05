@@ -1,39 +1,47 @@
 @import '/src/assets/scss/variaveis.scss';
 
-.section-container {
-  height: 60vh;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 5%;
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.card {
   display: flex;
   align-items: center;
   flex-direction: column;
-}
-
-h2 {
-  font-size: 3rem;
-  padding-bottom: 5rem;
-  color: $sucesso;
-}
-
-h3 {
-  font-size: 1.5rem;
-  padding-top: 2rem;
-}
-
-img {
-  height: 30%;
-  box-shadow: 0 0 10px 3px $preto;
-  cursor: pointer;
+  text-align: center;
+  justify-content: space-around;
+  box-shadow: 0px 0px 15px 2px $preto;
+  width: 30%;
+  height: 60%;
   border-radius: 20px;
 }
 
+.logo {
+  width: 100%;
+  height: 50%;
+}
+
+img {
+  width: 25%;
+  height: 50%;
+  cursor: pointer;
+}
+
 img:hover {
-  box-shadow: 0 0 15px 3px $preto;
+  transform: scale(1.1);
 }
 
 @media (max-width: 800px) {
-  h2 {
-    font-size: 2rem;
+  .card {
+    width: 90%;
+  }
+
+  img {
+    width: 32%;
+    height: 50%;
   }
 }
