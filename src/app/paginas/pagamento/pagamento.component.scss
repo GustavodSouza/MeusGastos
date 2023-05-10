@@ -20,33 +20,30 @@ app-card {
   width: 30%;
 }
 
-.cards, .inputs {
+.cards, .inputs-cadastro {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.input-filtro {
-  width: 20%;
-  margin: 5px 10px 5px 10px;
-}
-
-.filtro-mes {
+.filtros {
   display: flex;
   align-items: center;
+  width: 100%;
+  padding: 20px;
+  gap: 20px;
 }
 
-.filtro-mes > div {
-  margin-right: 10%;
-  margin-bottom: 20px;
+.filtro-descricao {
+  width: 20%;
 }
 
 .icon-hide {
   cursor: pointer;
-  color: #68d592;
-  margin-left: 10px;
+  color: $sucesso;
+  gap: 5px;
 }
 
-.rs {
-  margin-right: 5px;
+.form-input {
+  width: 25%;
 }

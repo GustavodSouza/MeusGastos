@@ -14,15 +14,12 @@ export class DialogoService {
   ): MatDialogRef<T, any> {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
-    const dialogRef = this.dialog.open(TCtor, data);
-    return dialogRef;
+    return this.dialog.open(TCtor, data);
   }
 
   abrirDialogo<T>(componente: any, data: T): MatDialogRef<any, any> {
-    const dialogRef = this.constroiDialogo(componente, {
+    return this.constroiDialogo(componente, {
       data
     });
-
-    return dialogRef;
   }
 }

@@ -24,19 +24,19 @@
 
   <app-card tituloCard="Novo lançamento">
     <form [formGroup]="formulario">
-      <div class="inputs">
-        <div>
+      <div class="inputs-cadastro">
+        <div class="form-input">
           <app-input formControlName="descricao">Descrição do item</app-input>
         </div>
-        <div>
+        <div class="form-input">
           <app-input tipo="number" formControlName="preco"
             >Preço pago</app-input
           >
         </div>
-        <div>
+        <div class="form-input">
           <app-date-picker formControlName="dataPagamento"></app-date-picker>
         </div>
-        <div>
+        <div class="form-buttons">
           <app-button
             [disabled]="!formulario.valid"
             background="sucesso"
@@ -56,8 +56,8 @@
   </app-card>
 
   <div class="mat-elevation-z8">
-    <div class="filtro-mes">
-      <div class="input-filtro">
+    <div class="filtros">
+      <div class="filtro-descricao">
         <app-input
           [isPequeno]="true"
           [isRequired]="false"
@@ -66,7 +66,7 @@
         >
       </div>
 
-      <div>
+      <div class="dropdown">
         <app-dropdown (lista)="setPagamentos = $event" (dinheiroTotal)="setDinheiroTotal = $event"></app-dropdown>
       </div>
 

@@ -38,8 +38,10 @@
     justify-content: center;
   }
 
-  .filtro-mes {
+  .filtros {
     flex-direction: column;
+    margin-right: none;
+    padding: 20px 0 20px 0 !important;
 
     .selecionar-mes, .filtro {
       width: 100%;
@@ -51,11 +53,11 @@
     }
   }
 
-  .inputs, .cards {
+  .inputs-cadastro, .cards {
     flex-direction: column;
   }
 
-  .inputs > div {
+  .inputs-cadastro > div {
     width: 100%;
   }
 
@@ -63,11 +65,16 @@
     width: 100% !important;
   }
 
-  .input-filtro {
+  .filtro-descricao {
     width: 80% !important;
   }
-  
+
   .dropdown-data {
     flex-direction: column;
+    width: 100%;
+  }
+
+  .dropdown {
+    width: 90% !important;
   }
 }

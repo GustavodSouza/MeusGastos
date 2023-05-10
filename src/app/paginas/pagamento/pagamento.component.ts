@@ -71,7 +71,7 @@ export class PagamentoComponent implements OnInit {
   public inicializarFormulario(): void {
     this.formulario = this.formBuilder.group({
       id: [''],
-      descricao: ['', [Validators.required, Validators.minLength(2)]],
+      descricao: ['', [Validators.required, Validators.minLength(1)]],
       preco: ['', Validators.required],
       dataPagamento: ['', Validators.required],
       uidUser: ['']
@@ -141,6 +141,10 @@ export class PagamentoComponent implements OnInit {
   toogleVisibilidadeValor(): void {
     this.isValorOCulto = !this.isValorOCulto;
     this.tabelaService.ocultar = this.isValorOCulto;
+  }
+
+  get form() {
+    return this.formulario.controls;
   }
 
   set setDinheiroTotal(dinheiroTotal: number) {
