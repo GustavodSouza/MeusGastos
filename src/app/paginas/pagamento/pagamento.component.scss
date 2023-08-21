@@ -17,7 +17,7 @@ mat-icon {
 }
 
 app-card {
-  width: 30%;
+  width: 47%;
 }
 
 .cards, .inputs-cadastro {
@@ -46,4 +46,8 @@ app-card {
 
 .form-input {
   width: 25%;
+}
+
+.mat-elevation-z8 {
+  border-radius: 20px;
 }

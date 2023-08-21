@@ -1,8 +1,6 @@
 import { EditarPagamentoComponent } from './editar-pagamento/editar-pagamento.component';
 import { ConfirmarDialogModule } from './confirmar/confirmar.module';
-import { InformacaoModule } from './../../components/common/informacao/informacao.module';
 import { CardModule } from './../../components/common/card/card.module';
-import { AccordionModule } from './../../components/common/accordion/accordion.module';
 import { InputFiltroModule } from './../../components/common/input-filtro/input-filtro.module';
 import { MaterialModule } from './../../shared/material-angular/material-angular.module';
 import { InputModule } from './../../components/common/input/input.module';
@@ -16,7 +14,6 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PagamentoRoutingModule } from './pagamento-routing.module';
 import { DropdownModule } from 'src/app/components/common/dropdown/dropdown.module';
-import { GastoEstatisticaPorcentagemModule } from 'src/app/components/common/gasto-estatistica-porcentagem/gasto-estatistica-porcentagem.module';
 
 @NgModule({
   declarations: [
@@ -35,12 +32,9 @@ import { GastoEstatisticaPorcentagemModule } from 'src/app/components/common/gas
     InputModule,
     MaterialModule,
     InputFiltroModule,
-    AccordionModule,
     CardModule,
-    InformacaoModule,
     ConfirmarDialogModule,
     DropdownModule,
-    GastoEstatisticaPorcentagemModule
   ],
   exports: [
   ],
