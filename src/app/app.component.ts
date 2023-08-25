@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
 
   public ngOnInit(): void {
     this.capturarTamanhoTela();
+    this.toolbarService.ocultarToolbar();
   }
 
   capturarTamanhoTela(): void {

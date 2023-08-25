@@ -1,5 +1,25 @@
-<div id="navMenu" (click)="mudarEstadoMenu()" #menu>
-  <span></span>
-  <span></span>
-  <span></span>
-</div>
+<mat-toolbar>
+  <div class="logo">
+    <h3>MeusGastos</h3>
+  </div>
+  <div class="menu" *ngIf="!toolbar">
+    <ul>
+      <li
+        [routerLinkActive]="'selecionado'"
+        *ngFor="let item of menu"
+        [routerLink]="item.path"
+      >
+        {{ item.nome }}
+      </li>
+      <li>
+        <div [matMenuTriggerFor]="menuUsuario" class="avatar">
+          <span>{{ nomeResumido }}</span>
+        </div>
+      </li>
+    </ul>
+    <mat-menu class="mat-menu-toolbar" #menuUsuario="matMenu">
+      <button mat-menu-item routerLink="/editar-perfil">Editar Perfil</button>
+      <button mat-menu-item (click)="logout()">Sair</button>
+    </mat-menu>
+  </div>
+</mat-toolbar>

@@ -1,24 +1,32 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
-import { MenuService } from './menu.service';
+import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { LoginService } from 'src/app/paginas/login/services/login.service';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.scss'],
+  styleUrls: ['./menu.component.scss']
 })
-export class MenuComponent implements AfterViewInit {
-  @ViewChild('menu') menu: ElementRef;
+export class MenuComponent implements OnInit {
+  
+  @Input() public menu;
+  @Input() public toolbar;
+
+  public nomeResumido: string;
 
   constructor(
-    private menuService: MenuService,
-  ) { }
-
-  ngAfterViewInit(): void {
-    this.menuService.referencia = this.menu;
+    private loginService: LoginService,
+    public router: Router
+  ) {
+    this.loginService.primeiraLetraNome.subscribe((nomeResumido: string) => {
+      this.nomeResumido = nomeResumido;
+    });
   }
 
-  mudarEstadoMenu(): void {
-    this.menuService.isAtivo = !this.menuService.isAtivo;
-    this.menu.nativeElement.classList.value = this.menuService.isAtivo ? 'active' : '';
+  ngOnInit(): void {
+  }
+
+  logout(): void {
+    this.loginService.logout();
   }
 }

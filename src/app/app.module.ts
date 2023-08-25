@@ -1,5 +1,4 @@
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouteGuardService } from './shared/guard/route-guard.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LOCALE_ID, NgModule } from '@angular/core';
@@ -17,10 +16,12 @@ import { registerLocaleData } from '@angular/common';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MaterialModule } from './shared/material-angular/material-angular.module';
 import { EntrarComponent } from './paginas/login/entrar/entrar.component';
-import { MenuComponent } from './components/common/menu/menu.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { TeclaPressionadaDirective } from './shared/diretivas/tecla-pressionada.directive';
 import { ToolbarComponent } from './paginas/toolbar/toolbar.component';
+import { GuardaRotaGuard } from './shared/guard/guarda-rota.guard';
+import { MenuMobileComponent } from './components/common/menu-mobile/menu-mobile.component';
+import { MenuComponent } from './components/common/menu/menu.component';
 
 registerLocaleData(localePt);
 @NgModule({
@@ -28,8 +29,9 @@ registerLocaleData(localePt);
     AppComponent,
     ToolbarComponent,
     EntrarComponent,
-    MenuComponent,
     TeclaPressionadaDirective,
+    MenuMobileComponent,
+    MenuComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
@@ -50,7 +52,7 @@ registerLocaleData(localePt);
   ],
   providers: [
     HttpClient,
-    RouteGuardService,
+    GuardaRotaGuard,
     {
       provide: LOCALE_ID, useValue: 'pt-BR',
     },

@@ -16,6 +16,9 @@ import { TabelaService } from 'src/app/components/common/tabela/tabela.service';
 import * as _ from 'lodash';
 import { DialogoService } from 'src/app/shared/dialogo/dialogo.service';
 import { faCalendarAlt, faDollarSign } from '@fortawesome/free-solid-svg-icons';
+import { ToolbarService } from '../toolbar/service/toolbar.service';
+import { UsuarioService } from 'src/app/shared/utils/usuario.service';
+import { LoginService } from '../login/services/login.service';
 
 @Component({
   selector: 'app-pagamento',
@@ -59,13 +62,17 @@ export class PagamentoComponent implements OnInit {
     public dialogRefConfirm: MatDialogRef<ConfirmarDialogComponent>,
     public saldoService: SaldoService,
     public tabelaService: TabelaService,
-    private dialogoService: DialogoService
+    private dialogoService: DialogoService,
+    private toolbarService: ToolbarService,
+    private usuarioService: UsuarioService,
+    private loginService: LoginService
   ) {}
 
   public ngOnInit(): void {
     this.inicializarFormulario();
     this.buscarTodosPagamentos();
-
+    this.toolbarService.mostrarToolbar();
+    this.loginService.primeiraLetraNome.next(this.usuarioService.obterPrimeiraLetraNome(this.loginService.nomeUsuario));
   }
 
   public inicializarFormulario(): void {

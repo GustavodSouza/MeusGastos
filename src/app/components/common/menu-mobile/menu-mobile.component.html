@@ -1,0 +1,12 @@
+<div>
+    <div class="logo-mobile">
+        <h3>MeusGastos</h3>
+        <button *ngIf="!toolbar" mat-mini-fab [matMenuTriggerFor]="menuUsuario">
+            <mat-icon>menu</mat-icon>
+        </button>
+    </div>
+    <mat-menu class="mat-menu-toolbar" #menuUsuario="matMenu">
+        <button mat-menu-item routerLink="/editar-perfil">Editar Perfil</button>
+        <button mat-menu-item (click)="logout()">Sair</button>
+    </mat-menu>
+</div>
