@@ -8,7 +8,8 @@ import { EntrarRoutingModule } from './entrar-routing.module';
   declarations: [],
   imports: [
     CommonModule,
-    EntrarRoutingModule
+    EntrarRoutingModule,
+    
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
