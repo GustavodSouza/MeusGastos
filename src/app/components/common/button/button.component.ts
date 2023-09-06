@@ -10,7 +10,7 @@ export class ButtonComponent implements OnChanges {
   @Input() background: string;
   @Input() label: string;
   @Input() disabled: boolean;
-  @Output() evento = new EventEmitter;
+  @Output() evento = new EventEmitter();
 
   isDisabled = false;
 

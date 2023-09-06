@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class LoaderPagamentosService {
+export class LoaderService {
   
   public loaderAtivo = false;
 
@@ -15,5 +15,13 @@ export class LoaderPagamentosService {
 
   get loader(): boolean {
     return this.loaderAtivo;
+  }
+
+  ativarLoader(): void {
+    this.loader = true;
+  }
+
+  desativarLoader(): void {
+    this.loader = false;
   }
 }

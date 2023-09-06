@@ -1,4 +1,4 @@
-export interface Saldo {
+export class Saldo {
   data: string;
   key?: string;
   saldo: number;

@@ -3,8 +3,8 @@ import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { map } from 'rxjs/operators';
 import { PerfilService } from 'src/app/shared/utils/perfil.service';
 import { SnackbarService } from 'src/app/components/common/snackbar/snackbar.service';
-import { Pagamentos, Pagamento } from '../interface/pagamento.interface';
-import { Meses } from '../interface/mes.interface';
+import { Pagamentos, Pagamento } from '../dto/pagamento';
+import { Meses } from '../dto/mes';
 import { MomentService } from 'src/app/shared/utils/moment.service';
 @Injectable({
   providedIn: 'root'
@@ -105,18 +105,18 @@ export class PagamentoService {
   }
   public obterAno() {
     return [
-      { nome: '2020' },
-      { nome: '2021' },
-      { nome: '2022' },
-      { nome: '2023' },
-      { nome: '2024' },
-      { nome: '2025' },
-      { nome: '2026' },
-      { nome: '2027' },
-      { nome: '2028' },
-      { nome: '2029' },
-      { nome: '2030' },
-      { nome: '2031' }
+      { nome: '2020', valor: '2020' },
+      { nome: '2021', valor: '2021' },
+      { nome: '2022', valor: '2022' },
+      { nome: '2023', valor: '2023' },
+      { nome: '2024', valor: '2024' },
+      { nome: '2025', valor: '2025' },
+      { nome: '2026', valor: '2026' },
+      { nome: '2027', valor: '2027' },
+      { nome: '2028', valor: '2028' },
+      { nome: '2029', valor: '2029' },
+      { nome: '2030', valor: '2030' },
+      { nome: '2031', valor: '2031' }
     ];
   }
 }

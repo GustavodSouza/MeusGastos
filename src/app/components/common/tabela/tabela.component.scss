@@ -1,8 +1,4 @@
-@import '/src/assets/scss/variaveis.scss';
-
-table {
-  width: 100%;
-}
+@import '/src/assets/scss/partials/colors.scss';
 
 ::ng-deep .mat-paginator-container {
   display: flex;
@@ -15,4 +11,12 @@ table {
 
 .lista-vazia {
   padding: 10px;
+}
+
+.icone-edicao {
+  color: $sucesso;
+}
+
+.icone-deletar {
+  color: $erro;
 }

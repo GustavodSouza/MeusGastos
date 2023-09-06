@@ -1,21 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { ToolbarService } from './paginas/toolbar/service/toolbar.service';
+import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
-  constructor(
-    private toolbarService: ToolbarService,
-  ) { }
-
-  public ngOnInit(): void {
-    this.capturarTamanhoTela();
-    this.toolbarService.ocultarToolbar();
-  }
-
-  capturarTamanhoTela(): void {
-    this.toolbarService.mobile = window.innerWidth <= 768;
-  }
+export class AppComponent {
+  constructor() {}
 }

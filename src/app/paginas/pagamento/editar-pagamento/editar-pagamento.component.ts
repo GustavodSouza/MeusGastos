@@ -1,5 +1,5 @@
 import { MomentService } from '../../../shared/utils/moment.service';
-import { Pagamento } from 'src/app/paginas/pagamento/interface/pagamento.interface';
+import { Pagamento } from 'src/app/paginas/pagamento/dto/pagamento';
 import { PagamentoService } from './../services/pagamento.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';

@@ -1,54 +1,88 @@
-@import "/src/assets/scss/mobile-style/pagamentos-mobile.scss";
 @import "/src/assets/scss/util.scss";
-@import "/src/assets/scss/variaveis.scss";
+@import "/src/assets/scss/partials/colors.scss";
 
-// Seta o 'padding' do elemento da tela
-.section-container {
-  width: calc(95% - 30px);
-  margin: 0 auto;
-}
-
-app-button {
-  margin-right: 10px;
-}
-
+app-card, 
+app-button, 
 mat-icon {
-  margin-left: 10px;
+  flex: 1;
+  padding: 0 5px;
 }
 
-app-card {
-  width: 47%;
+mat-icon  {
+  color: $sucesso;
 }
 
-.cards, .inputs-cadastro {
+form {
   display: flex;
-  justify-content: space-between;
+
+  app-input,
+  app-date-picker {
+    padding: 0 5px;
+    min-width: 20%;
+  }
+
+  .form-buttons {
+    display: flex;
+  }
+}
+
+.cards,
+form {
+  display: flex;
   align-items: center;
 }
 
 .filtros {
   display: flex;
   align-items: center;
-  width: 100%;
   padding: 20px;
   gap: 20px;
+
+  .dropdown {
+    display: flex;
+    gap: 10px;
+  }
 }
 
 .filtro-descricao {
   width: 20%;
 }
 
-.icon-hide {
-  cursor: pointer;
-  color: $sucesso;
-  gap: 5px;
-}
-
-.form-input {
-  width: 25%;
-}
-
 .tabela {
   border: 1px solid $borda;
   border-radius: 15px;
+}
+
+@media screen and (max-width: 768px) {
+  app-card {
+    width: 100%;
+  }
+
+  .cards,
+  form {
+    flex-direction: column;
+  }
+
+  form {
+    width: 100%;
+
+    app-input,
+    app-date-picker {
+      width: 100%;
+      padding: 5px 0;
+    }
+  }
+
+  .filtros {
+    flex-direction: column;
+
+    .filtro-descricao,
+    .dropdown {
+      width: 100%;
+    }
+    
+    .dropdown {
+      flex-direction: column;
+    }
+  }
 }

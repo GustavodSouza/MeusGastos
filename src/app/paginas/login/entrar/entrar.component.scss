@@ -1,4 +1,4 @@
-@import '/src/assets/scss/variaveis.scss';
+@import '/src/assets/scss/partials/colors.scss';
 
 .container {
   display: flex;
@@ -14,7 +14,7 @@
     text-align: center;
     justify-content: space-around;
     box-shadow: none;
-    width: 30%;
+    min-width: 30%;
     height: 60%;
     border-radius: 20px;
     border: 1px solid $borda;
@@ -34,7 +34,7 @@
   }
 
   img {
-    width: 25%;
+    min-width: 25%;
     height: 50%;
     cursor: pointer;
 

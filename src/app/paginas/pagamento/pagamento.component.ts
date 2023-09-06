@@ -1,17 +1,14 @@
 import { EditarPagamentoComponent } from './editar-pagamento/editar-pagamento.component';
 import { PerfilService } from '../../shared/utils/perfil.service';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MomentService } from 'src/app/shared/utils/moment.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { SaldoService } from './services/saldo.service';
 import { PagamentoService } from './services/pagamento.service';
 import { CalculoService } from 'src/app/shared/utils/calculo.service';
-import { MatSelect } from '@angular/material/select';
-import { MatExpansionPanel } from '@angular/material/expansion';
-import { Pagamento, Pagamentos } from './interface/pagamento.interface';
+import { Pagamento, Pagamentos } from './dto/pagamento';
 import { ConfirmarDialogComponent } from './confirmar/confirmar.component';
-import { LoaderPagamentosService } from 'src/app/components/common/loader-pagamentos/loader-pagamentos.service';
+import { LoaderService } from 'src/app/components/common/loader/loader.service';
 import { TabelaService } from 'src/app/components/common/tabela/tabela.service';
 import * as _ from 'lodash';
 import { DialogoService } from 'src/app/shared/dialogo/dialogo.service';
@@ -19,6 +16,8 @@ import { faCalendarAlt, faDollarSign } from '@fortawesome/free-solid-svg-icons';
 import { ToolbarService } from '../toolbar/service/toolbar.service';
 import { UsuarioService } from 'src/app/shared/utils/usuario.service';
 import { LoginService } from '../login/services/login.service';
+import { Meses } from './dto/mes';
+import { Anos } from './dto/anos';
 
 @Component({
   selector: 'app-pagamento',
@@ -29,46 +28,43 @@ export class PagamentoComponent implements OnInit {
 
   response: Pagamentos;
   formulario: FormGroup;
-  dinheiroTotal = 0;
-  key: string;
+  dinheiroTotal: number = 0;
   colunas: Array<string> = ['descricao', 'preco', 'dataPagamento', 'acoes'];
-
-  salarioRecebidoMes = 0;
   dados: Pagamentos;
   listaAuxiliar: Pagamentos;
-
   dataAtual = new Date();
-
-  isValorOCulto = false;
+  isOcultarValor: boolean;
 
   icones = {
     faCalendarAlt,
     faDollarSign
   };
 
-  @ViewChild('inputFiltroDia') inputFiltroDia: ElementRef;
-  @ViewChild('inputFiltroMes') inputFiltroMes: MatSelect;
-  @ViewChild('expansivelNovoPagamento') expansivelNovoPagamento: MatExpansionPanel;
-  @ViewChild('expansivelFiltros') expansivelFiltros: MatExpansionPanel;
+  meses: Meses = this.pagamentoService.obterMeses();
+  anos: Anos = this.pagamentoService.obterAno();
+
+  anoAtual = this.momentService.obterDataQuebrada(new Date()).ano;
+  mesAtual = this.momentService.obterDataQuebrada(new Date()).mes;
 
   constructor(
     private pagamentoService: PagamentoService,
     private formBuilder: FormBuilder,
-    private loaderPagamentosService: LoaderPagamentosService,
+    private loaderService: LoaderService,
     private perfilService: PerfilService,
     private calculoService: CalculoService,
     public momentService: MomentService,
     public dialog: MatDialog,
     public dialogRefConfirm: MatDialogRef<ConfirmarDialogComponent>,
-    public saldoService: SaldoService,
     public tabelaService: TabelaService,
     private dialogoService: DialogoService,
     private toolbarService: ToolbarService,
     private usuarioService: UsuarioService,
     private loginService: LoginService
-  ) {}
+  ) {
+    this.tabelaService.getOcultarValor.subscribe((valor) => this.isOcultarValor = valor);
+  }
 
-  public ngOnInit(): void {
+  ngOnInit(): void {
     this.inicializarFormulario();
     this.buscarTodosPagamentos();
     this.toolbarService.mostrarToolbar();
@@ -78,26 +74,26 @@ export class PagamentoComponent implements OnInit {
   public inicializarFormulario(): void {
     this.formulario = this.formBuilder.group({
       id: [''],
-      descricao: ['', [Validators.required, Validators.minLength(1)]],
+      descricao: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(30)]],
       preco: ['', Validators.required],
       dataPagamento: ['', Validators.required],
       uidUser: ['']
     });
   }
 
-  public async buscarTodosPagamentos(): Promise<void> {
-    this.loaderPagamentosService.loader = true;
-    (await this.pagamentoService.buscarTodosPagamentos()).subscribe((response: Pagamentos) => {
+  public buscarTodosPagamentos(): void {
+    this.loaderService.ativarLoader();
+
+    this.pagamentoService.buscarTodosPagamentos().subscribe((response: Pagamentos) => {
 
       this.listaAuxiliar = response;
       this.dados = this.listaAuxiliar;
 
       this.dinheiroTotal = this.calculoService.calcularTotalPagamentos(this.listaAuxiliar);
 
-      this.loaderPagamentosService.loader = false;
+      this.loaderService.desativarLoader();
     });
   }
-
 
   public deletarPagamento(item: Pagamento): void {
 
@@ -117,16 +113,12 @@ export class PagamentoComponent implements OnInit {
       dataDoItem: itemPagamento.dataPagamento,
       formulario: this.formulario,
     };
-
-
     this.dialogoService.abrirDialogo(EditarPagamentoComponent, data).afterClosed().subscribe((pagamento) => {
-        if (pagamento) {
-          this.pagamentoService.atualizarPagamento(pagamento.key, pagamento.data);
-
-          if (itemPagamento.dataPagamento !== pagamento.data.dataPagamento) {
-            this.pagamentoService.deletarPagamento(itemPagamento.key, itemPagamento);
-          }
+        if (!pagamento) {
+          return;
         }
+        
+        this.pagamentoService.atualizarPagamento(pagamento.key, pagamento.data);
       });
   }
 
@@ -134,11 +126,23 @@ export class PagamentoComponent implements OnInit {
     const perfilSession = this.perfilService.getPerfil();
 
     if (this.formulario.valid && !_.isNil(perfilSession)) {
-
       this.pagamentoService.adicionarNovoPagamento(this.formulario.value);
       this.limparFormulario();
       this.buscarTodosPagamentos();
     }
+  }
+
+  private obterPagamentosPorMesAno(): void {
+    this.loaderService.ativarLoader();
+    
+    this.pagamentoService.filtrarMesAno(this.mesAtual, this.anoAtual).subscribe((response: Pagamentos) => {
+      this.listaAuxiliar = response;
+      this.dados = this.listaAuxiliar;
+
+      this.dinheiroTotal = this.calculoService.calcularTotalPagamentos(this.listaAuxiliar);
+
+      this.loaderService.desativarLoader();
+    });
   }
 
   limparFormulario(): void {
@@ -146,8 +150,7 @@ export class PagamentoComponent implements OnInit {
   }
 
   toogleVisibilidadeValor(): void {
-    this.isValorOCulto = !this.isValorOCulto;
-    this.tabelaService.ocultar = this.isValorOCulto;
+    this.tabelaService.setOcultarValor = !this.isOcultarValor;
   }
 
   get form() {
@@ -165,6 +168,16 @@ export class PagamentoComponent implements OnInit {
 
   set filtrarDescricao(descricao: string) {
     this.listaAuxiliar = this.dados.filter((pagamento) => pagamento.descricao.toLowerCase().indexOf(descricao.toLowerCase()) > -1);
+  }
+
+  set setMesFiltrado(valor: string) {
+    this.mesAtual = valor;
+    this.obterPagamentosPorMesAno();
+  }
+
+  set setAnoFiltrado(valor: string) {
+    this.anoAtual = valor;
+    this.obterPagamentosPorMesAno();
   }
 }
 

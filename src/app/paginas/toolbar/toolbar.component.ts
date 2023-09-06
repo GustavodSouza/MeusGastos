@@ -21,10 +21,10 @@ export class ToolbarComponent {
       path: '/pagamento',
       nome: 'Registrar/Consultar Pagamentos'
     },
-    {
-      path: '/sobre',
-      nome: 'Sobre'
-    },
+    // {
+    //   path: '/sobre',
+    //   nome: 'Sobre'
+    // },
   ];
 
   constructor(

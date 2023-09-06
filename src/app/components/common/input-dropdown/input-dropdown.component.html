@@ -1,0 +1,5 @@
+<mat-form-field appearance="outline" class="dropdown">
+  <mat-select (ngModelChange)="change($event)" [(ngModel)]="dadoSelecionado">
+    <mat-option *ngFor="let item of opcoes" [value]="item.valor">{{ item.nome }}</mat-option>
+  </mat-select>
+</mat-form-field>

@@ -1,4 +1,3 @@
-import { PerfilConstant } from '../constant/perfil-constant';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -6,17 +5,19 @@ import { Injectable } from '@angular/core';
 })
 export class PerfilService {
 
+  readonly PERFIL = 'USER_PERFIL';
+
   constructor() { }
 
   public getPerfil(): any {
-    return JSON.parse(sessionStorage.getItem(PerfilConstant.PERFIL));
+    return JSON.parse(sessionStorage.getItem(this.PERFIL));
   }
 
   public setPerfil(perfil): void {
-    sessionStorage.setItem(PerfilConstant.PERFIL, JSON.stringify(perfil));
+    sessionStorage.setItem(this.PERFIL, JSON.stringify(perfil));
   }
 
   public removePerfil(): void {
-    sessionStorage.removeItem(PerfilConstant.PERFIL);
+    sessionStorage.removeItem(this.PERFIL);
   }
 }

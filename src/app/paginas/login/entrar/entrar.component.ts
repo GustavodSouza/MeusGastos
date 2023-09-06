@@ -1,4 +1,4 @@
-import { LoaderPagamentosService } from 'src/app/components/common/loader-pagamentos/loader-pagamentos.service';
+import { LoaderService } from 'src/app/components/common/loader/loader.service';
 import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { LoginService } from '../services/login.service';
@@ -13,7 +13,7 @@ export class EntrarComponent {
   constructor(
     private loginService: LoginService,
     private router: Router,
-    private loader: LoaderPagamentosService
+    private loader: LoaderService
   ) {}
 
   logarComContaGoogle(): void {

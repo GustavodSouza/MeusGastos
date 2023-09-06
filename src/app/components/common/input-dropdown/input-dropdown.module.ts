@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DropdownComponent } from './dropdown.component';
 import { MaterialModule } from 'src/app/shared/material-angular/material-angular.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { InputDropDownComponent } from './input-dropdown.component';
 
 @NgModule({
-  declarations: [DropdownComponent],
+  declarations: [InputDropDownComponent],
   imports: [
     CommonModule,
     MaterialModule,
     FormsModule,
     ReactiveFormsModule
   ],
-  exports: [DropdownComponent]
+  exports: [InputDropDownComponent]
 })
-export class DropdownModule { }
+export class InputDropDownModule { }

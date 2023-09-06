@@ -1,4 +1,4 @@
-export interface Mes {
+export class Mes {
   nome: string;
   valor: string;
 }

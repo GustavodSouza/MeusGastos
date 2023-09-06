@@ -1,9 +1,14 @@
-@import '/src/assets/scss/variaveis.scss';
+@import '/src/assets/scss/partials/colors.scss';
 
-app-button {
-  margin-right: 10px;
-}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
 
-::ng-deep .mat-dialog-container {
- //  background-color: $dark-mode;
+  .form-buttons {
+    display: flex;
+    gap: 5px;
+    padding-top: 5px;
+  }
 }

@@ -1,28 +1,10 @@
-.bold {
-  font-weight: bold;
-}
-
-.buttons {
-  display: flex;
-}
-
-.margin-left {
-  margin-left: 10px;
-}
-
-.margin-right {
-  margin-right: 20px;
-}
-
 .flex {
   display: flex;
   align-items: center;
 }
 
-.align-center {
-  justify-content: center;
-}
-
-fa-icon {
-  cursor: pointer;
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 10px;
 }

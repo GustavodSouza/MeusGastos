@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, Type,
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Pagamento } from 'src/app/paginas/pagamento/interface/pagamento.interface';
+import { Pagamento } from 'src/app/paginas/pagamento/dto/pagamento';
 import { TabelaService } from './tabela.service';
 
 @Component({
@@ -19,6 +19,8 @@ export class TabelaComponent implements OnChanges {
   @ViewChild(MatSort) sort: MatSort;
 
   listaFiltrada = new MatTableDataSource<Pagamento>();
+
+  isOcultarValor$ = this.tabelaService.getOcultarValor;
 
   constructor(
     public tabelaService: TabelaService,

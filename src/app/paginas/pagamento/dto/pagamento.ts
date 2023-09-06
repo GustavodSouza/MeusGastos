@@ -1,4 +1,4 @@
-export interface Pagamento {
+export class Pagamento {
   id: number;
   key: string;
   descricao: string;

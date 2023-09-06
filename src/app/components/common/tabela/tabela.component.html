@@ -16,7 +16,7 @@
   <ng-container matColumnDef="preco">
     <th mat-header-cell mat-sort-header *matHeaderCellDef>Preço</th>
     <td mat-cell *matCellDef="let element">
-      {{ tabelaService.ocultar ? "R$ ***" : (element.preco | currency: "R$") }}
+      {{ (isOcultarValor$ | async) ? "R$ ***" : (element.preco | currency: "R$") }}
     </td>
   </ng-container>
 
@@ -33,12 +33,12 @@
       </button>
       <mat-menu class="mat-menu-tabela" #menu="matMenu">
         <button mat-menu-item (click)="editar(element)">
-          <mat-icon class="icone-opcoes">edit</mat-icon>
-          <span>Editar</span>
+          <mat-icon class="icone-edicao">edit</mat-icon>
+          <strong>Editar</strong>
         </button>
         <button mat-menu-item (click)="deletar(element)">
-          <mat-icon class="icone-opcoes">delete</mat-icon>
-          <span>Remover</span>
+          <mat-icon class="icone-deletar">delete</mat-icon>
+          <strong>Remover</strong>
         </button>
       </mat-menu>
     </td>

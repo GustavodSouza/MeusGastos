@@ -1,6 +1,6 @@
-<app-loader-pagamentos></app-loader-pagamentos>
+<app-loader></app-loader>
 
-<section class="section-container">
+<section class="section-pagamento container">
   <div class="cards">
     <app-card tituloCard="Data" [icone]="icones.faCalendarAlt">
       <div class="flex">
@@ -9,9 +9,9 @@
     </app-card>
     <app-card tituloCard="Total" [icone]="icones.faDollarSign">
       <div class="flex">
-        <h3>{{ isValorOCulto ? 'R$ ***' : (dinheiroTotal | currency : "R$") }}</h3>
-        <mat-icon class="icon-hide" (click)="toogleVisibilidadeValor()">{{
-          isValorOCulto ? "visibility" : "visibility_off"
+        <h3>{{ isOcultarValor ? 'R$ ***' : (dinheiroTotal | currency : "R$") }}</h3>
+        <mat-icon (click)="toogleVisibilidadeValor()">{{
+          isOcultarValor ? "visibility" : "visibility_off"
         }}</mat-icon>
       </div>
     </app-card>
@@ -19,33 +19,23 @@
 
   <app-card tituloCard="Novo lançamento">
     <form [formGroup]="formulario">
-      <div class="inputs-cadastro">
-        <div class="form-input">
-          <app-input formControlName="descricao">Descrição do item</app-input>
-        </div>
-        <div class="form-input">
-          <app-input tipo="number" formControlName="preco"
-            >Preço pago</app-input
-          >
-        </div>
-        <div class="form-input">
-          <app-date-picker formControlName="dataPagamento"></app-date-picker>
-        </div>
-        <div class="form-buttons">
-          <app-button
-            [disabled]="!formulario.valid"
-            background="sucesso"
-            label="label-branco"
-            (evento)="adicionarNovoPagamento()"
-            >Cadastrar</app-button
-          >
-          <app-button
-            background="branco"
-            label="label-preto"
-            (evento)="limparFormulario()"
-            >Limpar</app-button
-          >
-        </div>
+      <app-input formControlName="descricao" [maxLength]="30">Descrição do item</app-input>
+      <app-input tipo="number" formControlName="preco">Preço pago</app-input>
+      <app-date-picker formControlName="dataPagamento"></app-date-picker>
+      <div class="form-buttons">
+        <app-button
+          [disabled]="!formulario.valid"
+          background="sucesso"
+          label="label-branco"
+          (evento)="adicionarNovoPagamento()"
+          >Cadastrar</app-button
+        >
+        <app-button
+          background="branco"
+          label="label-preto"
+          (evento)="limparFormulario()"
+          >Limpar</app-button
+        >
       </div>
     </form>
   </app-card>
@@ -53,16 +43,12 @@
   <div class="tabela">
     <div class="filtros">
       <div class="filtro-descricao">
-        <app-input
-          [isPequeno]="true"
-          [isRequired]="false"
-          [(ngModel)]="filtrarDescricao"
-          >Filtrar</app-input
-        >
+        <app-input [isRequired]="false" [(ngModel)]="filtrarDescricao">Filtrar</app-input>
       </div>
 
       <div class="dropdown">
-        <app-dropdown (lista)="setPagamentos = $event" (dinheiroTotal)="setDinheiroTotal = $event"></app-dropdown>
+        <app-input-dropdown [dadoSelecionado]="mesAtual" [opcoes]="meses" (emitDados)="setMesFiltrado = $event"></app-input-dropdown>
+        <app-input-dropdown [dadoSelecionado]="anoAtual" [opcoes]="anos" (emitDados)="setAnoFiltrado = $event"></app-input-dropdown>
       </div>
 
     </div>

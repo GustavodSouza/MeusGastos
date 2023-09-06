@@ -13,7 +13,7 @@ export class TeclaPressionadaDirective {
     public dialogRefConfirmar: MatDialogRef<ConfirmarDialogComponent>
   ) { }
 
-  @HostListener('window:keydown.enter', ['$event']) handleKeyDown(event: KeyboardEvent) {
+  @HostListener('window:keydown.escape', ['$event']) handleKeyDown(event: KeyboardEvent) {
     if (event) {
       this.dialogRefConfirmar.close();
       this.dialogRefEditar.close();
