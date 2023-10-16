@@ -12,9 +12,11 @@ Link para acessar: https://meus-gastos.vercel.app/
 
 Como rodar o projeto
 
-Clone através do comando: git clone <strong>https://github.com/GustavodSouza/MeusGastos.git</strong>
-Acesse a pasta do projeto e execute: <strong>npm install</strong>
-Acesse a pasta do projeto e execure: <strong>ng s ou ng serve</strong>
-Acesse o navegador e abra a url: <strong>http://localhost:4200/</strong>
-Clique no botão de login e vincule com sua conta google.
+Clone através do comando: git clone <strong>https://github.com/GustavodSouza/MeusGastos.git</strong><br>
+Acesse a pasta do projeto e execute: <strong>npm install</strong><br>
+Acesse a pasta do projeto e execure: <strong>ng s ou ng serve</strong><br>
+Acesse o navegador e abra a url: <strong>http://localhost:4200/</strong><br>
+Clique no botão de login e vincule com sua conta google.<br>
 Pronto só usar!!!
+
+Angular está na versão <strong>11.0.4</strong>
