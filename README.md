@@ -2,9 +2,9 @@
 
 Projeto pessoal desenvolvido com o intuíto de colocar em prática meus aprendizados com a tecnologia Angular e manter o controle de gastos mensais.
 
-Neste projeto é necessário ter uma conta google para entrar, pois a autenticação é feita com Firebase.
-Neste projeto é possível inserir um gasto realizado, inserindo a descrição, o preço e a data que foi feita a despesa.
-Toda vez que o mês se inicia os pagamentos ficam zerados e é possível acessar pagamentos passados através do filtro disponível.
+Neste projeto é necessário ter uma conta google para entrar, pois a autenticação é feita com Firebase.<br>
+Neste projeto é possível inserir um gasto realizado, inserindo a descrição, o preço e a data que foi feita a despesa.<br>
+Toda vez que o mês se inicia os pagamentos ficam zerados e é possível acessar pagamentos passados através do filtro disponível.<br>
 
 O projeto ainda está em construção e apresenta alguns bugs.
 
